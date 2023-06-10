@@ -5,9 +5,9 @@ import Timeline2014 from './Timeline2014.vue';
 import Timeline2015 from './Timeline2015.vue';
 import {
   KEY_2015_START,
-  KEYFRAMES,
   TRIGGERS,
 } from '../helpers/timelineKeyframes'
+import type { Trigger } from '../helpers/timelineKeyframes'
 
 const props = defineProps({
   progress: {
@@ -28,12 +28,6 @@ const stepName: string = 'timeline'
 const outerFrame = ref(null)
 const innerFrame = ref(null)
 const collapsed = ref<boolean>(false)
-const triggeredKeyframes = ref<number[]>([])
-const keyframe = computed(() => {
-  return triggeredKeyframes.value.length
-    ? triggeredKeyframes.value[triggeredKeyframes.value.length - 1]
-    : ''
-})
 
 const timelineProgress = computed(() => {
   if (props.stepsCompleted.includes(stepName)) {
@@ -44,8 +38,13 @@ const timelineProgress = computed(() => {
   return 0
 })
 
-const currentKeyframes = KEYFRAMES.slice();
-const currentTriggers = TRIGGERS.slice();
+const pending = ref<Trigger[]>(TRIGGERS.slice())
+const fired = ref<Trigger[]>([])
+const keyframe = computed(() => {
+  return fired.value.length
+    ? fired.value[fired.value.length - 1].id
+    : 0
+})
 
 watch(() => timelineProgress.value, async(newVal, oldVal) => {
   // Don't fiddle with the keyframes when the timeline
@@ -53,19 +52,28 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
   if (collapsed.value) {
     return;
   }
+  // Add trigger(s) while scrolling down
   if (newVal > oldVal) {
-    for (let trigger of currentTriggers) {
-      if (trigger <= newVal) {
-        const i = currentTriggers.findIndex(val => trigger)
-        triggeredKeyframes.value.push(currentKeyframes[i].id)
-        currentTriggers.shift()
-        currentKeyframes.shift()
+    for (let trigger of pending.value) {
+      if (trigger.progress <= newVal) {
+        fired.value.push(trigger)
+        // triggered.value.push(trigger.id)
+        pending.value.shift()
       } else {
         break;
       }
     }
+  // Remove trigger(s) while scrolling up
   } else if (newVal < oldVal) {
-    console.log('scrolling up', newVal, oldVal)
+    for (let trigger of fired.value.slice().reverse()) {
+      if (trigger.progress > newVal && !pending.value.includes(trigger)) {
+        pending.value.unshift(trigger)
+        fired.value.pop()
+        console.log(pending.value, fired.value)
+      } else {
+        break;
+      }
+    }
   }
   if (newVal === 1) {
     collapsed.value = true
@@ -74,7 +82,7 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
 })
 
 const timelineStyle = computed(() => {
-  if (triggeredKeyframes.value.includes(KEY_2015_START)) {
+  if (fired.value.find(t => t.id === KEY_2015_START)) {
     return 'top: -50px';
   }
   return '';
@@ -89,8 +97,8 @@ const timelineStyle = computed(() => {
       ref="innerFrame"
       :style="timelineStyle"
     >
-      <Timeline2014 :keyframe="keyframe" :triggered-keyframes="triggeredKeyframes" />
-      <Timeline2015 :keyframe="keyframe" :triggered-keyframes="triggeredKeyframes" />
+      <Timeline2014 :keyframe="keyframe" :fired="fired" />
+      <Timeline2015 :keyframe="keyframe" :fired="fired" />
     </div>
   </div>
 </template>
@@ -98,7 +106,7 @@ const timelineStyle = computed(() => {
 <style lang="postcss">
 .timeline {
   position: relative;
-  height: 1000rem;
+  height: 800rem;
 }
 
 .timeline-frame {

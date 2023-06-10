@@ -12,14 +12,15 @@ import {
   KEY_2014_YEAREND_BUBBLES,
   KEY_2014_COLLAPSE,
 } from '../helpers/timelineKeyframes'
+import type { Trigger } from '../helpers/timelineKeyframes';
 
 const props = defineProps({
   keyframe: {
     type: Number,
     required: true,
   },
-  triggeredKeyframes: {
-    type: Array<Number>,
+  fired: {
+    type: Array<Trigger>,
     required: true,
   },
 })
@@ -46,11 +47,11 @@ const bubbles = [
 ]
 
 const currentBubbles = computed(() => {
-  if (props.triggeredKeyframes.includes(KEY_2014_YEAREND_BUBBLES)) {
+  if (props.fired.find(t => t.id === KEY_2014_YEAREND_BUBBLES)) {
     return bubbles.slice()
-  } else if (props.triggeredKeyframes.includes(KEY_2014_INEFFECT_BUBBLES)) {
+  } else if (props.fired.find(t => t.id === KEY_2014_INEFFECT_BUBBLES)) {
     return bubbles.slice(0, 5)
-  } else if (props.triggeredKeyframes.includes(KEY_2014_INTRO_BUBBLES)) {
+  } else if (props.fired.find(t => t.id === KEY_2014_INTRO_BUBBLES)) {
     return Array(5).fill(DEAD)
   }
   return []
@@ -79,11 +80,11 @@ const currentBubbles = computed(() => {
     </div>
     <BubbleGroup :bubbles="currentBubbles" />
     <div class="timeline-text">
-      <div class="bubble-pointer fade" :class="keyframe >= KEY_2014_INEFFECT_BUBBLES && keyframe <= KEY_2014_DEAD ? 'fade-in' : 'fade-out'"
+      <div class="bubble-pointer fade" :class="keyframe >= KEY_2014_INEFFECT_BUBBLES && keyframe < KEY_2014_DEAD ? 'fade-in' : 'fade-out'"
         style="position: relative; left: 13vw">
         In Effect
       </div>
-      <div class="bubble-pointer fade" :class="keyframe >= KEY_2014_DEAD && keyframe <= KEY_2014_YEAREND ? 'fade-in' : 'fade-out'"
+      <div class="bubble-pointer fade" :class="keyframe >= KEY_2014_DEAD && keyframe < KEY_2014_YEAREND ? 'fade-in' : 'fade-out'"
         style="position: relative; left: 26vw">
         Dead
       </div>

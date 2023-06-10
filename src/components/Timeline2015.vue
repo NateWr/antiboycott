@@ -10,14 +10,15 @@ import {
   KEY_2015_FEDERAL_BUBBLES,
   KEY_2015_COLLAPSE
 } from '../helpers/timelineKeyframes'
+import type { Trigger } from '../helpers/timelineKeyframes';
 
 const props = defineProps({
   keyframe: {
     type: Number,
     required: true,
   },
-  triggeredKeyframes: {
-    type: Array<Number>,
+  fired: {
+    type: Array<Trigger>,
     required: true,
   },
 })
@@ -62,9 +63,9 @@ const bubbles = [
 ]
 
 const currentBubbles = computed(() => {
-  if (props.triggeredKeyframes.includes(KEY_2015_FEDERAL_BUBBLES)) {
+  if (props.fired.find(t => t.id === KEY_2015_FEDERAL_BUBBLES)) {
     return bubbles.slice()
-  } else if (props.triggeredKeyframes.includes(KEY_2015_COPYCAT_BUBBLES)) {
+  } else if (props.fired.find(t => t.id === KEY_2015_COPYCAT_BUBBLES)) {
     return bubbles.slice(0, 12)
   }
   return []

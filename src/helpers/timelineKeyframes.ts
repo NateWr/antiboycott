@@ -1,6 +1,11 @@
-type KeyFrame = {
+export type KeyFrame = {
   id: number,
   duration: number,
+}
+
+export type Trigger = {
+  id: number,
+  progress: number,
 }
 
 export const KEY_2014_START : number = 0
@@ -42,10 +47,13 @@ export const KEYFRAMES : KeyFrame[] = [
  *
  * The trigger point is a value between 0 and 1 which represents
  * the percentage of scroll of the timeline when the keyframe
- * should be triggerred.
+ * should be triggered.
  */
 const total = KEYFRAMES.reduce((a, b) => a + b.duration, 0)
 
-export const TRIGGERS : number[] = KEYFRAMES.map((keyframe, i) => {
-  return (((keyframe.duration / total) * 0.5) * (i + 1))
+export const TRIGGERS : Trigger[] = KEYFRAMES.map((keyframe, i) => {
+  return {
+    id: keyframe.id,
+    progress: (((keyframe.duration / total) * 0.5) * (i + 1))
+  }
 })
