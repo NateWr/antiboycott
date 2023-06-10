@@ -69,7 +69,6 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
       if (trigger.progress > newVal && !pending.value.includes(trigger)) {
         pending.value.unshift(trigger)
         fired.value.pop()
-        console.log(pending.value, fired.value)
       } else {
         break;
       }
