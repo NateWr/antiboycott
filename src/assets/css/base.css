@@ -1,0 +1,87 @@
+:root {
+  --color-black: #000;
+  --color-blue: #42C0E2;
+  --color-dark-blue: #213751;
+  --color-green: #91E681;
+  --color-orange: #FD9647;
+  --color-purple: #AD96FF;
+  --color-white: #fff;
+
+  --txt-regular: 400;
+  --txt-medium: 500;
+  --txt-semibold: 600;
+  --txt-bold: 700;
+  --txt-heavy: 800;
+  --txt-black: 900;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+body {
+  color: var(--color-white);
+  background: var(--color-dark-blue);
+
+  *::selection {
+    background: var(--color-blue);
+    color: var(--color-black);
+  }
+}
+
+a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: var(--txt-bold);
+
+  &:focus-visible {
+    outline: 1px solid var(--color-blue);
+  }
+}
+
+.txt-highlight {
+  display: inline-block;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  margin-left: -0.2em;
+  font-weight: var(--txt-black);
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.txt-highlight-blue {
+  background: var(--color-blue);
+}
+
+.txt-highlight-green {
+  background: var(--color-green);
+}
+
+.txt-highlight-orange {
+  background: var(--color-orange);
+}
+
+.txt-highlight-purple {
+  background: var(--color-purple);
+}
+
+
+.fade {
+  transition: opacity 0.5s;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
