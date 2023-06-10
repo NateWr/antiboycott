@@ -54,6 +54,6 @@ const total = KEYFRAMES.reduce((a, b) => a + b.duration, 0)
 export const TRIGGERS : Trigger[] = KEYFRAMES.map((keyframe, i) => {
   return {
     id: keyframe.id,
-    progress: (((keyframe.duration / total) * 0.5) * (i + 1))
+    progress: (((keyframe.duration / total) * 1) * (i + 1))
   }
 })

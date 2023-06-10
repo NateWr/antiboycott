@@ -106,7 +106,7 @@ const timelineStyle = computed(() => {
 <style lang="postcss">
 .timeline {
   position: relative;
-  height: 800rem;
+  height: 700rem;
 }
 
 .timeline-frame {
