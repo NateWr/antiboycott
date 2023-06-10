@@ -22,15 +22,11 @@ const props = defineProps({
     type: Array<String>,
     required: true
   },
-  stepsStarted: {
-    type: Array<String>,
-    required: true
-  }
 })
 
 const stepName: string = 'timeline'
-const timelineScroller = ref(null)
-const timelineFrame = ref(null)
+const outerFrame = ref(null)
+const innerFrame = ref(null)
 const collapsed = ref<boolean>(false)
 const triggeredKeyframes = ref<number[]>([])
 const keyframe = computed(() => {
@@ -73,6 +69,7 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
   }
   if (newVal === 1) {
     collapsed.value = true
+    document.documentElement.scrollTop -= (outerFrame.value.scrollHeight - innerFrame.value.scrollHeight)
   }
 })
 
@@ -85,11 +82,11 @@ const timelineStyle = computed(() => {
 </script>
 
 <template>
-  <div class="timeline" :class="collapsed ? 'timeline-collapsed' : ''" :data-step="stepName" ref="timelineScroller">
+  <div class="timeline" :class="collapsed ? 'timeline-collapsed' : ''" :data-step="stepName" ref="outerFrame">
     <h2 class="sr-only">Timeline</h2>
     <div
       class="timeline-frame"
-      ref="timelineFrame"
+      ref="innerFrame"
       :style="timelineStyle"
     >
       <Timeline2014 :keyframe="keyframe" :triggered-keyframes="triggeredKeyframes" />
