@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "images": "node ./src/scripts/HeroImage.js",
+    "images": "node ./src/scripts/images.js",
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
