@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import gsap from 'gsap'
-
 const props = defineProps({
   bubbles: {
     type: Array<String>,
@@ -8,30 +6,22 @@ const props = defineProps({
   },
 })
 
+let i = 0;
+
 function onBeforeEnter(el) {
-  el.style.opacity = 0
+  i++
+  el.style['transition-delay'] = (i * 0.05) + 's'
 }
 
-function onEnter(el, done) {
-  gsap.to(el, {
-    opacity: 1,
-    delay: el.dataset.index * 0.1,
-    onComplete: done
-  })
-}
-
-function onLeave(el, done) {
-  gsap.to(el, {
-    opacity: 0,
-    delay: el.dataset.index * 0.1,
-    onComplete: done
-  })
+function onBeforeLeave(el) {
+  i--
+  el.style['transition-delay'] = (i * 0.025) + 's'
 }
 </script>
 
 <template>
   <div class="bubble-group">
-    <TransitionGroup :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+    <TransitionGroup name="bubble" @before-enter="onBeforeEnter" @before-leave="onBeforeLeave">
       <div v-for="(bubble, index) in bubbles" class="bubble" :class="'bubble-' + bubble" :key="index"
         :data-index="index" />
     </TransitionGroup>
@@ -49,6 +39,7 @@ function onLeave(el, done) {
     height: 6vw;
     border-radius: 50%;
     border: 1vw solid var(--color-white);
+    transition: all 0.15s;
 }
 
 .bubble-dead {
@@ -58,5 +49,15 @@ function onLeave(el, done) {
 .bubble-ineffect {
     border: 1vw solid var(--color-blue);
     background: var(--color-blue);
+}
+
+.bubble-enter-from,
+.bubble-leave-to {
+  opacity: 0;
+}
+
+.bubble-enter-to,
+.bubble-leave-from {
+  opacity: 1;
 }
 </style>

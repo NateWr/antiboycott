@@ -63,7 +63,7 @@ const bubbles = [
 ]
 
 const currentBubbles = computed(() => {
-  if (props.fired.find(t => t.id === KEY_2015_FEDERAL_BUBBLES)) {
+  if (props.fired.find(t => t.id === KEY_2015_FEDERAL)) {
     return bubbles.slice()
   } else if (props.fired.find(t => t.id === KEY_2015_COPYCAT_BUBBLES)) {
     return bubbles.slice(0, 12)

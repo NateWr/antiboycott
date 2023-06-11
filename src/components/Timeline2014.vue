@@ -9,7 +9,6 @@ import {
   KEY_2014_INEFFECT_BUBBLES,
   KEY_2014_DEAD,
   KEY_2014_YEAREND,
-  KEY_2014_YEAREND_BUBBLES,
   KEY_2014_COLLAPSE,
 } from '../helpers/timelineKeyframes'
 import type { Trigger } from '../helpers/timelineKeyframes';
@@ -47,7 +46,7 @@ const bubbles = [
 ]
 
 const currentBubbles = computed(() => {
-  if (props.fired.find(t => t.id === KEY_2014_YEAREND_BUBBLES)) {
+  if (props.fired.find(t => t.id === KEY_2014_YEAREND)) {
     return bubbles.slice()
   } else if (props.fired.find(t => t.id === KEY_2014_INEFFECT_BUBBLES)) {
     return bubbles.slice(0, 5)
