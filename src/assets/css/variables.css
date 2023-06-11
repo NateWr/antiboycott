@@ -1,0 +1,24 @@
+:root {
+  --color-black: #000;
+  --color-blue: #42C0E2;
+  --color-dark-blue: #213751;
+  --color-green: #91E681;
+  --color-orange: #FD9647;
+  --color-purple: #AD96FF;
+  --color-white: #fff;
+
+  --txt-regular: 400;
+  --txt-medium: 500;
+  --txt-semibold: 600;
+  --txt-bold: 700;
+  --txt-heavy: 800;
+  --txt-black: 900;
+
+  @custom-media --tablets-sm (min-width: 720px);
+  @custom-media --tablets (min-width: 834px);
+  @custom-media --tablets-landscape (min-width: 1024px);
+  @custom-media --laptops-sm (min-width: 1280px);
+  @custom-media --laptops (min-width: 1400px);
+  @custom-media --laptops-lg (min-width: 1600px);
+  @custom-media --laptops-xl (min-width: 1920px);
+}

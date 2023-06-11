@@ -1,5 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import postcssNesting from 'postcss-nesting'
+import postcssCustomMedia from 'postcss-custom-media'
+import postcssCssVariables from 'postcss-css-variables'
 import { imagetools } from 'vite-imagetools'
 
 import { defineConfig } from 'vite'
@@ -19,8 +21,10 @@ export default defineConfig({
   css: {
       postcss: {
           plugins: [
-              postcssNesting
+              postcssNesting,
+              postcssCssVariables,
+              postcssCustomMedia,
           ],
-      },
+      }
   }
 })
