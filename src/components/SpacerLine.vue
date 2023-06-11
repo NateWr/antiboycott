@@ -46,6 +46,8 @@ let height = computed(() => {
 </template>
 
 <style lang="postcss">
+@import '../assets/css/variables.css';
+
 .spacer {
   display: flex;
   justify-content: center;

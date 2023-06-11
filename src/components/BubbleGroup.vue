@@ -29,6 +29,8 @@ function onBeforeLeave(el) {
 </template>
 
 <style lang="postcss">
+@import '../assets/css/variables.css';
+
 .bubble-group {
     display: flex;
     flex-wrap: wrap;

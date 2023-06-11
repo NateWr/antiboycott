@@ -118,6 +118,8 @@ const props = defineProps({
 </template>
 
 <style lang="postcss">
+@import '../assets/css/variables.css';
+
 .history {
 }
 </style>

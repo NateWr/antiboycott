@@ -76,15 +76,12 @@ onMounted(() => {
   /**
    * Show the scroll button when the app is loaded
    */
-  const scroll = document.getElementById('hero-scroll');
-  if (scroll) {
-    const className = 'hero-scroll';
-    scroll.className = `${className} ${className}-enter`;
-    scroll.removeAttribute('hidden');
-    setTimeout(() => {
-      scroll.className = 'hero-scroll';
-    }, 1000);
-  }
+  setTimeout(() => {
+    const scroll = document.getElementById('hero-scroll');
+    if (scroll) {
+        scroll.removeAttribute('hidden');
+    }
+  }, 4000)
 })
 </script>
 
@@ -107,6 +104,8 @@ onMounted(() => {
 </template>
 
 <style lang="postcss">
+@import './assets/css/variables.css';
+
 .hero-scroll {
   position: absolute;
   bottom: 4rem;
@@ -116,18 +115,20 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   color: var(--color-orange);
+  font-size: 0.6rem;
+  font-weight: var(--txt-black);
   text-transform: uppercase;
-  transition: all 0.5s;
-  opacity: 1;
+  letter-spacing: 0.1em;
+  transition: opacity 0.5s;
 
   & svg {
-    width: 2rem;
+    width: 1rem;
     height: auto;
   }
-}
 
-.hero-scroll-enter {
-  opacity: 0;
+  &:not([hidden]) {
+    opacity: 1;
+  }
 }
 
 [data-step="end"] {
@@ -135,5 +136,26 @@ onMounted(() => {
   justify-content: center;
   font-size: 3rem;
   padding-bottom: 200rem;
+}
+
+@media (--tablets-sm) {
+  .hero-scroll {
+    font-size: 1rem;
+
+    & svg {
+      width: 1.5rem;
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-width: 992px) {
+  .hero-scroll {
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 0.25em;
+    left: 4vh;
+    transform: none;
+  }
 }
 </style>

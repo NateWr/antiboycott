@@ -103,6 +103,8 @@ const timelineStyle = computed(() => {
 </template>
 
 <style lang="postcss">
+@import '../assets/css/variables.css';
+
 .timeline {
   position: relative;
   height: 700rem;
