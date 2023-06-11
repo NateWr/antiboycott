@@ -106,6 +106,12 @@ onMounted(() => {
 <style lang="postcss">
 @import './assets/css/variables.css';
 
+.wrapper {
+  background-color: var(--color-dark-blue);
+  background-image: url('img/background.jpg');
+  background-repeat: repeat-both;
+}
+
 .hero-scroll {
   position: absolute;
   bottom: 4rem;

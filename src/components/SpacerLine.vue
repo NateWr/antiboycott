@@ -52,8 +52,8 @@ let height = computed(() => {
   display: flex;
   justify-content: center;
   height: 30rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .spacer-line {
   height: 0;
