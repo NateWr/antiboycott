@@ -8,7 +8,7 @@ const stepsStarted = ref<string[]>([])
 const stepsCompleted = ref<string[]>([])
 const step = ref<string>('')
 const progress = ref<number>(0)
-const initialized = ref<boolean>(false)
+let initialized : boolean = false
 
 /**
  * If the page is already scrolled down the page when scrollama
@@ -33,6 +33,7 @@ const init = () => {
     }
   }
   document.documentElement.scrollTop += 4
+  initialized = true
 }
 
 onMounted(() => {
@@ -56,7 +57,7 @@ onMounted(() => {
         }
         stepsStarted.value.push(step.value)
       }
-      if (!initialized.value) {
+      if (!initialized) {
         init();
       }
     })
