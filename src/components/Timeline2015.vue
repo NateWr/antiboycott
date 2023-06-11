@@ -7,7 +7,6 @@ import {
   KEY_2015_COPYCAT,
   KEY_2015_COPYCAT_BUBBLES,
   KEY_2015_FEDERAL,
-  KEY_2015_FEDERAL_BUBBLES,
   KEY_2015_COLLAPSE
 } from '../helpers/timelineKeyframes'
 import type { Trigger } from '../helpers/timelineKeyframes';
