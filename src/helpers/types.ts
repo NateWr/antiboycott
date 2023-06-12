@@ -16,4 +16,5 @@ export type Law = {
   date: string,
   status: string,
   url: string,
+  label: string | null,
 }

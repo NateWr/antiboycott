@@ -8,12 +8,13 @@ import {
   KEY_2014_INEFFECT,
   KEY_2014_INEFFECT_HIGHLIGHT,
   KEY_2014_DEAD,
+  KEY_2014_DEAD_HIGHLIGHT,
   KEY_2014_YEAREND,
   KEY_2014_COLLAPSE,
   TRIGGERS,
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types';
-import { time } from 'console';
+import { INEFFECT, DEAD } from '../helpers/billStatus'
 
 const props = defineProps({
   allLaws: {
@@ -38,11 +39,29 @@ const laws = computed(() => {
   return props.allLaws.filter(law => law.year === 2014)
 })
 
+const keyFired = (key : number) => {
+  return !!props.fired.find(t => t.id === key);
+}
+
+const getLawIndex = (status : string) => {
+  return laws.value.findIndex(l => l.status === status)
+}
+
 const currentLaws = computed(() => {
-  if (props.fired.find(t => t.id === KEY_2014_YEAREND)) {
-    return laws.value.slice()
-  } else if (props.fired.find(t => t.id === KEY_2014_INTRO_BUBBLES)) {
-    return laws.value.slice(0, 8)
+  if (keyFired(KEY_2014_YEAREND)) {
+    let currentLaws = laws.value.slice();
+    currentLaws[getLawIndex(DEAD)].label = '';
+    return currentLaws;
+  } else if (keyFired(KEY_2014_INTRO_BUBBLES)) {
+    let currentLaws = laws.value.slice(0, 8);
+    if (keyFired(KEY_2014_DEAD_HIGHLIGHT)) {
+      currentLaws[getLawIndex(DEAD)].label = 'Dead';
+    } else if (keyFired(KEY_2014_DEAD)) {
+      currentLaws[getLawIndex(INEFFECT)].label = '';
+    } else if (keyFired(KEY_2014_INEFFECT_HIGHLIGHT)) {
+      currentLaws[getLawIndex(INEFFECT)].label = 'In Effect';
+    }
+    return currentLaws
   }
   return []
 })
@@ -81,17 +100,7 @@ const yearProgress = computed(() => {
         By the end of the year 18 anti-boycott bills have been introduced
       </span>
     </div>
-    <BubbleGroup :laws="currentLaws" />
-    <div class="timeline-text">
-      <div class="bubble-pointer fade" :class="keyframe >= KEY_2014_INEFFECT_HIGHLIGHT && keyframe < KEY_2014_DEAD ? 'fade-in' : 'fade-out'"
-        style="position: relative; left: 13vw">
-        In Effect
-      </div>
-      <div class="bubble-pointer fade" :class="keyframe >= KEY_2014_DEAD && keyframe < KEY_2014_YEAREND ? 'fade-in' : 'fade-out'"
-        style="position: relative; left: 26vw">
-        Dead
-      </div>
-    </div>
+    <BubbleGroup :laws="currentLaws" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-large' : ''"/>
   </div>
 </template>
 
@@ -184,5 +193,10 @@ const yearProgress = computed(() => {
 
 .timeline-year .bubble-group {
   margin-top: 1rem;
+}
+
+.bubble-group-large .bubble {
+  width: 2rem;
+  height: 2rem;
 }
 </style>

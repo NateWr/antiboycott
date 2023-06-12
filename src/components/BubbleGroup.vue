@@ -94,6 +94,17 @@ function onBeforeLeave(el : HTMLElement) {
         <svg viewBox="0 0 26.458333 26.458333" xmlns="http://www.w3.org/2000/svg">
           <use :xlink:href="`#${bubble.svgDef}`" />
         </svg>
+        <transition name="bubble-label">
+          <span
+            v-if="bubble.label"
+            class="bubble-label"
+          >
+            <span class="bubble-label-line" aria-hidden="true" />
+            <span class="bubble-label-text">
+              {{ bubble.label }}
+            </span>
+          </span>
+        </transition>
       </span>
     </TransitionGroup>
   </div>
@@ -103,34 +114,16 @@ function onBeforeLeave(el : HTMLElement) {
 @import '../assets/css/variables.css';
 
 .bubble-group {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }
 
 .bubble {
-  width: 6vw;
-  height: 6vw;
-  transition: all 0.15s;
-}
-
-.bubble-israel {
-  fill: var(--color-blue);
-}
-
-.bubble-esg {
-  fill: var(--color-orange);
-}
-
-.bubble-guns {
-  fill: var(--color-green);
-}
-
-.bubble-fossil {
-  fill: var(--color-purple);
-}
-
-.bubble-defeated {
-  fill: var(--color-red);
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  transition: opacity 0.15s;
 }
 
 .bubble-enter-from,
@@ -138,8 +131,85 @@ function onBeforeLeave(el : HTMLElement) {
   opacity: 0;
 }
 
-.bubble-enter-to,
-.bubble-leave-from {
+.bubble-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 1rem);
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bubble-label-line {
+  width: 0;
+  height: 5rem;
+  border-left: 1px solid var(--color-white);
+  transition: height 0.3s;
+}
+
+.bubble-label-text {
+  font-size: 0.75rem;
+  font-weight: var(--txt-black);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s 0.3s;
+}
+
+.bubble-label-enter-from,
+.bubble-label-leave-to {
+
+  & .bubble-label-line {
+    height: 0;
+  }
+
+  & .bubble-label-text {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+.bubble-israel {
+  fill: var(--color-blue);
+
+  & .bubble-label-line {
+    border-color: var(--color-blue);
+  }
+}
+
+.bubble-esg {
+  fill: var(--color-orange);
+
+  & .bubble-label-line {
+    border-color: var(--color-orange);
+  }
+}
+
+.bubble-guns {
+  fill: var(--color-green);
+
+  & .bubble-label-line {
+    border-color: var(--color-green);
+  }
+}
+
+.bubble-fossil {
+  fill: var(--color-purple);
+
+  & .bubble-label-line {
+    border-color: var(--color-purple);
+  }
+}
+
+.bubble-defeated {
+  fill: var(--color-red);
+
+  & .bubble-label-line {
+    border-color: var(--color-red);
+  }
 }
 </style>
