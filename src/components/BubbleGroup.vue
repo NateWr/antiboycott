@@ -1,19 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BubbleDead1 from '../assets/img/bubble-dead-1.svg'
-import BubbleDead2 from '../assets/img/bubble-dead-2.svg'
-import BubbleDead3 from '../assets/img/bubble-dead-3.svg'
-import BubbleDead4 from '../assets/img/bubble-dead-4.svg'
-import BubbleDefeated1 from '../assets/img/bubble-defeated-1.svg'
-import BubbleDefeated2 from '../assets/img/bubble-defeated-2.svg'
-import BubbleIneffect1 from '../assets/img/bubble-ineffect-1.svg'
-import BubbleIneffect2 from '../assets/img/bubble-ineffect-2.svg'
-import BubbleIneffect3 from '../assets/img/bubble-ineffect-3.svg'
-import BubbleIneffect4 from '../assets/img/bubble-ineffect-4.svg'
-import BubblePending1 from '../assets/img/bubble-pending-1.svg'
-import BubblePending2 from '../assets/img/bubble-pending-2.svg'
-import BubblePending3 from '../assets/img/bubble-pending-3.svg'
-import BubblePending4 from '../assets/img/bubble-pending-4.svg'
 import {
   DEAD ,
   INEFFECT,
@@ -30,65 +16,64 @@ const props = defineProps({
 })
 
 const BubblesDead = [
-  BubbleDead1,
-  BubbleDead2,
-  BubbleDead3,
-  BubbleDead4,
+  'bubble-dead-1',
+  'bubble-dead-2',
+  'bubble-dead-3',
+  'bubble-dead-4',
 ]
 
 const BubblesDefeated = [
-  BubbleDefeated1,
-  BubbleDefeated2,
+  'bubble-defeated-1',
+  'bubble-defeated-2',
 ]
 
 const BubblesIneffect = [
-  BubbleIneffect1,
-  BubbleIneffect2,
-  BubbleIneffect3,
-  BubbleIneffect4,
+  'bubble-ineffect-1',
+  'bubble-ineffect-2',
+  'bubble-ineffect-3',
+  'bubble-ineffect-4',
 ]
 
 const BubblesPending = [
-  BubblePending1,
-  BubblePending2,
-  BubblePending3,
-  BubblePending4,
+  'bubble-pending-1',
+  'bubble-pending-2',
+  'bubble-pending-3',
+  'bubble-pending-4',
 ]
 
 const bubbles = computed(() => {
   return props.laws.map((law, index) => {
     const i = index % 4
-    let component
+    let svgDef
     switch (law.status) {
       case DEAD:
-        component = BubblesDead[i % 4]
+        svgDef = BubblesDead[i % 4]
         break
       case DEFEATED:
-        component = BubblesDefeated[i % 2]
+        svgDef = BubblesDefeated[i % 2]
         break
       case INEFFECT:
-        component = BubblesIneffect[i % 4]
+        svgDef = BubblesIneffect[i % 4]
         break
       case PENDING:
-        component = BubblesPending[i % 4]
+        svgDef = BubblesPending[i % 4]
         break
     }
     return {
-      component: component,
-      category: law.category,
-      status: law.status,
+      ...law,
+      svgDef,
     }
   })
 })
 
 let i = 0;
 
-function onBeforeEnter(el) {
+function onBeforeEnter(el : HTMLElement) {
   i++
   el.style['transition-delay'] = (i * 0.05) + 's'
 }
 
-function onBeforeLeave(el) {
+function onBeforeLeave(el : HTMLElement) {
   i--
   el.style['transition-delay'] = (i * 0.025) + 's'
 }
@@ -97,16 +82,19 @@ function onBeforeLeave(el) {
 <template>
   <div class="bubble-group">
     <TransitionGroup name="bubble" @before-enter="onBeforeEnter" @before-leave="onBeforeLeave">
-      <component
+      <span
         v-for="(bubble, index) in bubbles"
-        :is="bubble.component"
         :key="index"
         class="bubble"
         :class="[
           `bubble-${bubble.status}`,
           `bubble-${bubble.category}`,
         ]"
-      />
+      >
+        <svg viewBox="0 0 26.458333 26.458333" xmlns="http://www.w3.org/2000/svg">
+          <use :xlink:href="`#${bubble.svgDef}`" />
+        </svg>
+      </span>
     </TransitionGroup>
   </div>
 </template>
@@ -147,7 +135,6 @@ function onBeforeLeave(el) {
 
 .bubble-enter-from,
 .bubble-leave-to {
-  transition: none;
   opacity: 0;
 }
 

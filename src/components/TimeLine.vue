@@ -29,6 +29,7 @@ const outerFrame = ref(null)
 const innerFrame = ref(null)
 const collapsed = ref<boolean>(false)
 const laws = ref<Law[]>([])
+const bubblesSvg = ref<string>('')
 
 const timelineProgress = computed(() => {
   if (props.stepsCompleted.includes(stepName)) {
@@ -94,6 +95,11 @@ onMounted(() => {
     .then(r => {
       laws.value = r
     })
+  fetch('img/bubbles.svg')
+    .then(r => r.text())
+    .then(r => {
+      bubblesSvg.value = r
+    })
 })
 </script>
 
@@ -108,6 +114,7 @@ onMounted(() => {
       <Timeline2014 :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
       <Timeline2015 :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
     </div>
+    <span v-if="bubblesSvg" v-html="bubblesSvg" hidden aria-hidden="true"/>
   </div>
 </template>
 
@@ -141,16 +148,21 @@ onMounted(() => {
   margin-top: 1rem;
   height: auto;
   max-height: 50rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
   opacity: 1;
   overflow: hidden;
   transition-property: opacity, max-height;
   transition-duration: 0.3s, 0.3s;
-  transition-delay: 0s, 0.3s;
+  transition-delay: 0.3s, 0s;
 }
 
 .timeline-text-hidden {
   max-height: 0;
   opacity: 0;
   margin: 0;
+  transition-property: opacity, max-height;
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0s, 0.3s;
 }
 </style>
