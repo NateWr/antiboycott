@@ -12,6 +12,9 @@ fs.readdirSync(outputDir)
     )
   })
 
+/**
+ * Generate responsive image sizes for the hero image
+ */
 const processHeroImage = () => {
 
   const slug = 'boycott-israel-march';
@@ -50,6 +53,9 @@ const processHeroImage = () => {
   })
 }
 
+/**
+ * Run file compression on the background texture
+ */
 const processBackground = () => {
   const slug = 'background';
   const source = `./src/assets/img/${slug}.png`
