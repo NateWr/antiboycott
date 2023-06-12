@@ -3,6 +3,7 @@ import postcssNesting from 'postcss-nesting'
 import postcssCustomMedia from 'postcss-custom-media'
 import postcssCssVariables from 'postcss-css-variables'
 import { imagetools } from 'vite-imagetools'
+import svgLoader from 'vite-svg-loader'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -11,7 +12,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [
     vue(),
-    imagetools()
+    imagetools(),
+    svgLoader()
   ],
   resolve: {
     alias: {

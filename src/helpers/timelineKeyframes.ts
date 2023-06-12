@@ -1,20 +1,12 @@
-export type KeyFrame = {
-  id: number,
-  duration: number,
-}
+import type { KeyFrame, Trigger } from './types'
 
-export type Trigger = {
-  id: number,
-  progress: number,
-}
-
-export const KEY_2014_START : number = 0
-export const KEY_2014_INTRO : number = 1
-export const KEY_2014_INTRO_BUBBLES : number = 2
-export const KEY_2014_INEFFECT : number = 3
-export const KEY_2014_INEFFECT_BUBBLES : number = 4
-export const KEY_2014_DEAD : number = 5
-export const KEY_2014_YEAREND : number = 6
+export const KEY_2014_START : number = 1
+export const KEY_2014_INTRO : number = 2
+export const KEY_2014_INTRO_BUBBLES : number = 3
+export const KEY_2014_INEFFECT : number = 4
+export const KEY_2014_INEFFECT_HIGHLIGHT : number = 5
+export const KEY_2014_DEAD : number = 6
+export const KEY_2014_YEAREND : number = 7
 export const KEY_2014_COLLAPSE : number = 8
 export const KEY_2015_START : number = 9
 export const KEY_2015_COPYCAT = 10
@@ -27,7 +19,7 @@ export const KEYFRAMES : KeyFrame[] = [
   {id: KEY_2014_INTRO, duration: 5},
   {id: KEY_2014_INTRO_BUBBLES, duration: 5},
   {id: KEY_2014_INEFFECT, duration: 5},
-  {id: KEY_2014_INEFFECT_BUBBLES, duration: 5},
+  {id: KEY_2014_INEFFECT_HIGHLIGHT, duration: 5},
   {id: KEY_2014_DEAD, duration: 5},
   {id: KEY_2014_YEAREND, duration: 10},
   {id: KEY_2014_COLLAPSE, duration: 5},

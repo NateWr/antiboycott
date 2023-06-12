@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity';
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import Timeline2014 from './Timeline2014.vue';
 import Timeline2015 from './Timeline2015.vue';
 import {
   KEY_2015_START,
   TRIGGERS,
 } from '../helpers/timelineKeyframes'
-import type { Trigger } from '../helpers/timelineKeyframes'
+import type { Law, Trigger } from '../helpers/types'
 
 const props = defineProps({
   progress: {
@@ -28,6 +28,7 @@ const stepName: string = 'timeline'
 const outerFrame = ref(null)
 const innerFrame = ref(null)
 const collapsed = ref<boolean>(false)
+const laws = ref<Law[]>([])
 
 const timelineProgress = computed(() => {
   if (props.stepsCompleted.includes(stepName)) {
@@ -86,6 +87,14 @@ const timelineStyle = computed(() => {
   }
   return '';
 })
+
+onMounted(() => {
+  fetch('laws.json')
+    .then(r => r.json())
+    .then(r => {
+      laws.value = r
+    })
+})
 </script>
 
 <template>
@@ -96,8 +105,8 @@ const timelineStyle = computed(() => {
       ref="innerFrame"
       :style="timelineStyle"
     >
-      <Timeline2014 :keyframe="keyframe" :fired="fired" />
-      <Timeline2015 :keyframe="keyframe" :fired="fired" />
+      <Timeline2014 :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2015 :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
     </div>
   </div>
 </template>
@@ -107,6 +116,8 @@ const timelineStyle = computed(() => {
 
 .timeline {
   position: relative;
+  padding-left: 4vw;
+  padding-right: 4vw;
   height: 700rem;
 }
 
@@ -127,6 +138,7 @@ const timelineStyle = computed(() => {
 }
 
 .timeline-text {
+  margin-top: 1rem;
   height: auto;
   max-height: 50rem;
   opacity: 1;
@@ -139,5 +151,6 @@ const timelineStyle = computed(() => {
 .timeline-text-hidden {
   max-height: 0;
   opacity: 0;
+  margin: 0;
 }
 </style>
