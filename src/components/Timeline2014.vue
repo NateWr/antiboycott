@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import BubbleGroup from './BubbleGroup.vue';
+import TimelineArrow from './TimelineArrow.vue';
 import {
   KEY_2014_START,
   KEY_2014_INTRO,
@@ -15,6 +16,8 @@ import {
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types';
 import { INEFFECT, DEAD } from '../helpers/billStatus'
+import TimelineDate from './TimelineDate.vue';
+import TimelineText from './TimelineText.vue';
 
 const props = defineProps({
   allLaws: {
@@ -79,14 +82,12 @@ const yearProgress = computed(() => {
 </script>
 
 <template>
-  <div class="timeline-year timeline-year-2014">
-    <div class="timeline-arrow" :class="yearProgress > 0.05 ? 'timeline-arrow-active' : ''" :style="yearProgress > 0.05 ? `height: ${yearProgress * 100}%` : ''" aria-hidden="true" />
-    <h3 class="timeline-date" :class="keyframe >= KEY_2014_START ? 'timeline-date-active' : ''">
-      <span class="timeline-date-dot" aria-hidden="true" />
-      <span class="timeline-date-marker" aria-hidden="true" />
-      <span class="timeline-date-text">2014</span>
-    </h3>
-    <div class="timeline-text" :class="keyframe >= KEY_2014_COLLAPSE ? 'timeline-text-hidden' : ''">
+  <div class="timeline-year">
+    <TimelineArrow :progress="yearProgress" />
+    <TimelineDate :keyframe="keyframe" :target="KEY_2014_START">
+      2014
+    </TimelineDate>
+    <TimelineText :keyframe="keyframe" :start="KEY_2014_START" :end="KEY_2014_COLLAPSE">
       <span class="fade" :class="keyframe >= KEY_2014_INTRO ? 'fade-in' : 'fade-out'">
         Eight bills are introduced in January.
       </span>
@@ -99,99 +100,13 @@ const yearProgress = computed(() => {
       <span class="fade" :class="keyframe >= KEY_2014_YEAREND ? 'fade-in' : 'fade-out'">
         By the end of the year 18 anti-boycott bills have been introduced
       </span>
-    </div>
-    <BubbleGroup :laws="currentLaws" class="bubble-group-2014" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-2014-small' : ''"/>
+    </TimelineText>
+    <BubbleGroup :laws="currentLaws" class="bubble-group-2014" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-2014-big' : ''"/>
   </div>
 </template>
 
 <style lang="postcss">
 @import '../assets/css/variables.css';
-
-.timeline-year {
-  position: relative;
-  padding-top: 1rem;
-  padding-left: 2rem;
-}
-
-.timeline-date {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-left: -2rem;
-  margin-bottom: 1rem;
-}
-
-.timeline-arrow {
-  position: absolute;
-  top: 1.5rem;
-  left: 0.5rem;
-  width: 2px;
-  height: 0;
-  transform: translateX(-1px);
-  background: var(--color-white);
-  border-radius: 1px;
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    width: 0;
-    left: -3px;
-    transform: translateY(-1px);
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 8px solid var(--color-white);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-}
-
-.timeline-arrow-active:after {
-  opacity: 1;
-}
-
-.timeline-date-text {
-  padding-left: 0.5em;
-  font-size: 1.25rem;
-  font-weight: var(--txt-regular);
-  line-height: 1rem;
-  opacity: 0;
-  transform: translateX(-1em);
-  transition: all 0.3s 0.3s;
-}
-
-.timeline-date-marker {
-  width: 0;
-  transform: translateY(-50%);
-  border-top: 1px dashed var(--color-white);
-  transition: width 0.5s 0.1s;
-}
-
-.timeline-date-dot {
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  transform: transateX(-50%);
-  background: var(--color-white);
-  transition: all 0.5s;
-}
-
-.timeline-date-active {
-
-  .timeline-date-text {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .timeline-date-marker {
-    width: 3.5rem;
-  }
-
-  .timeline-date-dot {
-    width: 1rem;
-    height: 1rem;
-  }
-}
 
 .bubble-group-2014 {
   width: 10rem;
@@ -200,7 +115,7 @@ const yearProgress = computed(() => {
   transition: all 0.6s 0.6s;
 }
 
-.bubble-group-2014-small {
+.bubble-group-2014-big {
   transform: scale(1.7, 1.7);
 }
 </style>

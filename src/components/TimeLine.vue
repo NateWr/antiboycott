@@ -128,8 +128,8 @@ onMounted(() => {
       ref="innerFrame"
       :style="timelineStyle"
     >
-      <Timeline2014 :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2015 :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2014 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2015 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
     </div>
     <span v-if="bubblesSvg" v-html="bubblesSvg" hidden aria-hidden="true"/>
   </div>
@@ -162,25 +162,9 @@ onMounted(() => {
   }
 }
 
-.timeline-text {
-  margin-bottom: 1rem;
-  height: auto;
-  max-height: 50rem;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  opacity: 1;
-  overflow: hidden;
-  transition-property: opacity, max-height, margin;
-  transition-duration: 0.3s, 0.3s, 0.3s;
-  transition-delay: 0.3s, 0s, 0s;
-}
-
-.timeline-text-hidden {
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
-  transition-property: opacity, max-height, margin;
-  transition-duration: 0.3s, 0.3s, 0.3s;
-  transition-delay: 0s, 0.3s, 0.3s;
+.timeline-year {
+  position: relative;
+  padding-top: 1rem;
+  padding-left: 2rem;
 }
 </style>

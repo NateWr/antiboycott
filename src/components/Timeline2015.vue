@@ -10,6 +10,9 @@ import {
   TRIGGERS
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types';
+import TimelineArrow from './TimelineArrow.vue';
+import TimelineDate from './TimelineDate.vue';
+import TimelineText from './TimelineText.vue';
 
 const props = defineProps({
   allLaws: {
@@ -60,20 +63,18 @@ const yearProgress = computed(() => {
 
 <template>
   <div class="timeline-year">
-    <div class="timeline-arrow" :class="yearProgress > 0.05 ? 'timeline-arrow-active' : ''" :style="yearProgress > 0.05 ? `height: ${yearProgress * 100}%` : ''" aria-hidden="true" />
-    <h3 class="timeline-date" :class="keyframe >= KEY_2015_START ? 'timeline-date-active' : ''">
-      <span class="timeline-date-dot" aria-hidden="true" />
-      <span class="timeline-date-marker" aria-hidden="true" />
-      <span class="timeline-date-text">2015</span>
-    </h3>
-    <div class="timeline-text" :class="keyframe >= KEY_2015_COLLAPSE ? 'timeline-text-hidden' : ''">
+    <TimelineArrow :progress="yearProgress" />
+    <TimelineDate :keyframe="keyframe" :target="KEY_2015_START">
+      2015
+    </TimelineDate>
+    <TimelineText :keyframe="keyframe" :start="KEY_2015_START" :end="KEY_2015_COLLAPSE">
       <span class="fade" :class="keyframe >= KEY_2015_COPYCAT ? 'fade-in' : 'fade-out'">
         Copycat bills are introduced in several states.
       </span>
       <span class="fade" :class="keyframe >= KEY_2015_FEDERAL ? 'fade-in' : 'fade-out'">
         Similar legislation is proposed and passed at the federal level.
       </span>
-    </div>
+    </TimelineText>
     <BubbleGroup :laws="currentLaws" />
   </div>
 </template>
