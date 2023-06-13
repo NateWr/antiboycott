@@ -88,7 +88,12 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
           <span class="history-year">1956</span>
           <span class="history-name">
             <span class="history-name-bg" aria-hidden="true" />
-            <span class="history-name-text">Montgomery Bus Boycott</span>
+            <span class="history-name-text">Montgomery Bus</span>
+          </span>
+          <br />
+          <span class="history-name">
+            <span class="history-name-bg" aria-hidden="true" />
+            <span class="history-name-text">Boycott</span>
           </span>
         </h3>
         <p class="history-desc">After Rosa Parks was arrested for refusing to surrender her seat to a white person, a year-long boycott of the public transit system compelled the Supreme Court to declare the racist segregation of buses in Alabama unconstitutional.</p>
@@ -133,7 +138,12 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
           <span class="history-year">1986</span>
           <span class="history-name">
             <span class="history-name-bg" aria-hidden="true" />
-            <span class="history-name-text">Anti-Apartheid Movement</span>
+            <span class="history-name-text">Anti-Apartheid</span>
+          </span>
+          <br />
+          <span class="history-name">
+            <span class="history-name-bg" aria-hidden="true" />
+            <span class="history-name-text">Movement</span>
           </span>
         </h3>
         <p class="history-desc">Americans launched economic, social and cultural boycotts of South Africa that led Congress to pass the Comprehensive Anti-Apartheid Act, overruling President Reagan’s veto to do so.</p>
