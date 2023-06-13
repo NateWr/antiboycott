@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed } from '@vue/reactivity';
-import { onMounted, ref, watch } from 'vue';
-import Timeline2014 from './Timeline2014.vue';
-import Timeline2015 from './Timeline2015.vue';
+import { computed } from '@vue/reactivity'
+import { onMounted, ref, watch } from 'vue'
+import debounce from 'debounce'
+import Timeline2014 from './Timeline2014.vue'
+import Timeline2015 from './Timeline2015.vue'
 import {
   KEY_2015_START,
   TRIGGERS,
@@ -76,9 +77,25 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
       }
     }
   }
+  /**
+   * Collapse the timeline after the user has stopped scrolling
+   *
+   * Scrolling has to stop on iOS before setting the scrollTop or
+   * the value will be ignored. A "momentum" scroll (swipe) will
+   * reset the scrollTop according to the values when the gesture
+   * began.
+   */
   if (newVal === 1) {
-    collapsed.value = true
-    document.documentElement.scrollTop -= (outerFrame.value.scrollHeight - innerFrame.value.scrollHeight)
+    const collapseTimeline = debounce(() => {
+      collapsed.value = true
+      let $scrollEl = document.scrollingElement
+      if (!$scrollEl) {
+        $scrollEl = document.documentElement
+      }
+      $scrollEl.scrollTop = $scrollEl.scrollTop - (outerFrame.value.scrollHeight - innerFrame.value.scrollHeight);
+      removeEventListener('scroll', collapseTimeline)
+    }, 100)
+    addEventListener('scroll', collapseTimeline)
   }
 })
 

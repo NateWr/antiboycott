@@ -141,7 +141,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   font-size: 3rem;
-  padding-bottom: 200rem;
+  padding-bottom: 1000rem;
 }
 
 @media (--tablets-sm) {
