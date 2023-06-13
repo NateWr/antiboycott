@@ -70,12 +70,12 @@ let i = 0;
 
 function onBeforeEnter(el : HTMLElement) {
   i++
-  el.style['transition-delay'] = (i * 0.05) + 's'
+  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * 0.05)}s`
 }
 
 function onBeforeLeave(el : HTMLElement) {
   i--
-  el.style['transition-delay'] = (i * 0.025) + 's'
+  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * 0.025)}s`
 }
 </script>
 
@@ -123,7 +123,7 @@ function onBeforeLeave(el : HTMLElement) {
   position: relative;
   width: 1rem;
   height: 1rem;
-  transition: opacity 0.15s;
+  transition: width 1s 0.6s, height 1s 0.6s, opacity 0.15s;
 }
 
 .bubble-enter-from,

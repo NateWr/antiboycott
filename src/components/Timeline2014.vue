@@ -79,7 +79,7 @@ const yearProgress = computed(() => {
 </script>
 
 <template>
-  <div class="timeline-year">
+  <div class="timeline-year timeline-year-2014">
     <div class="timeline-arrow" :class="yearProgress > 0.05 ? 'timeline-arrow-active' : ''" :style="yearProgress > 0.05 ? `height: ${yearProgress * 100}%` : ''" aria-hidden="true" />
     <h3 class="timeline-date" :class="keyframe >= KEY_2014_START ? 'timeline-date-active' : ''">
       <span class="timeline-date-dot" aria-hidden="true" />
@@ -100,7 +100,7 @@ const yearProgress = computed(() => {
         By the end of the year 18 anti-boycott bills have been introduced
       </span>
     </div>
-    <BubbleGroup :laws="currentLaws" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-large' : ''"/>
+    <BubbleGroup :laws="currentLaws" class="bubble-group-2014" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-2014-small' : ''"/>
   </div>
 </template>
 
@@ -109,7 +109,8 @@ const yearProgress = computed(() => {
 
 .timeline-year {
   position: relative;
-  padding: 2rem;
+  padding-top: 1rem;
+  padding-left: 2rem;
 }
 
 .timeline-date {
@@ -117,11 +118,12 @@ const yearProgress = computed(() => {
   display: flex;
   align-items: center;
   margin-left: -2rem;
+  margin-bottom: 1rem;
 }
 
 .timeline-arrow {
   position: absolute;
-  top: 2.5rem;
+  top: 1.5rem;
   left: 0.5rem;
   width: 2px;
   height: 0;
@@ -191,12 +193,14 @@ const yearProgress = computed(() => {
   }
 }
 
-.timeline-year .bubble-group {
-  margin-top: 1rem;
+.bubble-group-2014 {
+  width: 10rem;
+  transform: scale(1, 1);
+  transform-origin: left top;
+  transition: all 0.6s 0.6s;
 }
 
-.bubble-group-large .bubble {
-  width: 2rem;
-  height: 2rem;
+.bubble-group-2014-small {
+  transform: scale(1.7, 1.7);
 }
 </style>

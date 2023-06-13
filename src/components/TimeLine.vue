@@ -131,6 +131,7 @@ onMounted(() => {
 .timeline-frame {
   position: sticky;
   top: 0;
+  padding-top: 2rem;
   padding-bottom: 20rem;
   transition: top 0.5s;
 }
@@ -145,24 +146,24 @@ onMounted(() => {
 }
 
 .timeline-text {
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   height: auto;
   max-height: 50rem;
   font-size: 1.25rem;
   line-height: 1.4;
   opacity: 1;
   overflow: hidden;
-  transition-property: opacity, max-height;
-  transition-duration: 0.3s, 0.3s;
-  transition-delay: 0.3s, 0s;
+  transition-property: opacity, max-height, margin;
+  transition-duration: 0.3s, 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s, 0s;
 }
 
 .timeline-text-hidden {
   max-height: 0;
   opacity: 0;
   margin: 0;
-  transition-property: opacity, max-height;
-  transition-duration: 0.3s, 0.3s;
-  transition-delay: 0s, 0.3s;
+  transition-property: opacity, max-height, margin;
+  transition-duration: 0.3s, 0.3s, 0.3s;
+  transition-delay: 0s, 0.3s, 0.3s;
 }
 </style>
