@@ -2,13 +2,25 @@
 import { computed } from '@vue/reactivity'
 import { onMounted, ref, watch } from 'vue'
 import debounce from 'debounce'
-import Timeline2014 from './Timeline2014.vue'
-import Timeline2015 from './Timeline2015.vue'
 import {
-  KEY_2015_START,
+  KEY_2017_START,
+  KEY_2021_START,
+  KEY_2022_START,
   TRIGGERS,
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types'
+import Timeline2014 from './Timeline2014.vue'
+import Timeline2015 from './Timeline2015.vue'
+import Timeline2016 from './Timeline2016.vue'
+import Timeline2017 from './Timeline2017.vue'
+import Timeline2018 from './Timeline2018.vue'
+import Timeline2019 from './Timeline2019.vue'
+import Timeline2020 from './Timeline2020.vue'
+import Timeline2021 from './Timeline2021.vue'
+import Timeline2022 from './Timeline2022.vue'
+import Timeline2023 from './Timeline2023.vue'
+import { KEY_2018_START } from '../helpers/timelineKeyframes'
+import { KEY_2023_START } from '../helpers/timelineKeyframes'
 
 const props = defineProps({
   progress: {
@@ -100,8 +112,16 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
 })
 
 const timelineStyle = computed(() => {
-  if (fired.value.find(t => t.id === KEY_2015_START)) {
-    return 'top: -50px';
+  if (fired.value.find(t => t.id === KEY_2023_START)) {
+    return 'top: -68rem';
+  } else if (fired.value.find(t => t.id === KEY_2022_START)) {
+    return 'top: -60rem';
+  } else if (fired.value.find(t => t.id === KEY_2021_START)) {
+    return 'top: -50rem';
+  } else if (fired.value.find(t => t.id === KEY_2018_START)) {
+    return 'top: -30rem';
+  } else if (fired.value.find(t => t.id === KEY_2017_START)) {
+    return 'top: -22rem';
   }
   return '';
 })
@@ -130,6 +150,14 @@ onMounted(() => {
     >
       <Timeline2014 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
       <Timeline2015 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2016 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2017 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2018 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2019 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2020 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2021 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2022 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2023 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
     </div>
     <span v-if="bubblesSvg" v-html="bubblesSvg" hidden aria-hidden="true"/>
   </div>
@@ -142,7 +170,7 @@ onMounted(() => {
   position: relative;
   padding-left: 4vw;
   padding-right: 4vw;
-  height: 700rem;
+  height: 1500rem;
 }
 
 .timeline-frame {
@@ -166,5 +194,9 @@ onMounted(() => {
   position: relative;
   padding-top: 1rem;
   padding-left: 2rem;
+
+  & .bubble-group {
+    padding-bottom: 1rem;
+  }
 }
 </style>

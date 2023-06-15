@@ -98,7 +98,7 @@ const yearProgress = computed(() => {
         The rest are defeated or withdrawn without a vote.
       </span>
       <span class="fade" :class="keyframe >= KEY_2014_YEAREND ? 'fade-in' : 'fade-out'">
-        By the end of the year 18 anti-boycott bills have been introduced
+        By the end of the year 18 anti-boycott bills have been introduced.
       </span>
     </TimelineText>
     <BubbleGroup :laws="currentLaws" class="bubble-group-2014" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-2014-big' : ''"/>
@@ -117,5 +117,6 @@ const yearProgress = computed(() => {
 
 .bubble-group-2014-big {
   transform: scale(1.7, 1.7);
+  gap: 0.125rem
 }
 </style>

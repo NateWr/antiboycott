@@ -1,21 +1,58 @@
 import type { KeyFrame, Trigger } from './types'
 
-export const KEY_2014_START : number = 1
-export const KEY_2014_INTRO : number = 2
-export const KEY_2014_INTRO_BUBBLES : number = 3
-export const KEY_2014_INEFFECT : number = 4
-export const KEY_2014_INEFFECT_HIGHLIGHT : number = 5
-export const KEY_2014_DEAD : number = 6
-export const KEY_2014_DEAD_HIGHLIGHT : number = 7
-export const KEY_2014_YEAREND : number = 8
-export const KEY_2014_COLLAPSE : number = 9
-export const KEY_2015_START : number = 10
-export const KEY_2015_COPYCAT = 11
-export const KEY_2015_COPYCAT_BUBBLES = 12
-export const KEY_2015_FEDERAL = 13
-export const KEY_2015_COLLAPSE = 14
+let i = 0;
+export const KEY_TIMELINE_START : number = i++
+export const KEY_2014_START : number = i++
+export const KEY_2014_INTRO : number = i++
+export const KEY_2014_INTRO_BUBBLES : number = i++
+export const KEY_2014_INEFFECT : number = i++
+export const KEY_2014_INEFFECT_HIGHLIGHT : number = i++
+export const KEY_2014_DEAD : number = i++
+export const KEY_2014_DEAD_HIGHLIGHT : number = i++
+export const KEY_2014_YEAREND : number = i++
+export const KEY_2014_COLLAPSE : number = i++
+export const KEY_2015_START : number = i++
+export const KEY_2015_COPYCAT : number = i++
+export const KEY_2015_COPYCAT_BUBBLES : number = i++
+export const KEY_2015_FEDERAL : number = i++
+export const KEY_2015_COLLAPSE : number = i++
+export const KEY_2016_START : number = i++
+export const KEY_2016_INTRO : number = i++
+export const KEY_2016_INTRO_BUBBLES : number = i++
+export const KEY_2016_COLLAPSE : number = i++
+export const KEY_2017_START : number = i++
+export const KEY_2017_UNCONSTITUTIONAL : number = i++
+export const KEY_2017_UNCONSTITUTIONAL_BUBBLES : number = i++
+export const KEY_2017_LAWS_CONTINUE : number = i++
+export const KEY_2017_LAWS_CONTINUE_BUBBLE : number = i++
+export const KEY_2017_COLLAPSE_TOP : number = i++
+export const KEY_2017_TARGET_ANYONE : number = i++
+export const KEY_2017_PUBLISHER : number = i++
+export const KEY_2017_PUBLISHER_HIGHLIGHT : number = i++
+export const KEY_2017_CASE_LOST : number = i++
+export const KEY_2017_SUPREME_COURT : number = i++
+export const KEY_2017_COLLAPSE_ALL : number = i++
+export const KEY_2018_START : number = i++
+export const KEY_2018_INTRO : number = i++
+export const KEY_2018_INTRO_BUBBLES : number = i++
+export const KEY_2018_COLLAPSE : number = i++
+export const KEY_2019_START : number = i++
+export const KEY_2020_START : number = i++
+export const KEY_2021_START : number = i++
+export const KEY_2021_TARGETS_EXPAND : number = i++
+export const KEY_2021_TARGETS_EXPAND_BUBBLES : number = i++
+export const KEY_2021_COLLAPSE : number = i++
+export const KEY_2022_START : number = i++
+export const KEY_2022_ESG : number = i++
+export const KEY_2022_ESG_BUBBLES : number = i++
+export const KEY_2022_COLLAPSE : number = i++
+export const KEY_2023_START : number = i++
+export const KEY_2023_TARGETS_EXPAND : number = i++
+export const KEY_2023_TARGETS_EXPAND_BUBBLES : number = i++
+export const KEY_2023_COLLAPSE : number = i++
 
 export const KEYFRAMES : KeyFrame[] = [
+  {id: KEY_TIMELINE_START, duration: 1},
   {id: KEY_2014_START, duration: 5},
   {id: KEY_2014_INTRO, duration: 5},
   {id: KEY_2014_INTRO_BUBBLES, duration: 5},
@@ -30,6 +67,40 @@ export const KEYFRAMES : KeyFrame[] = [
   {id: KEY_2015_COPYCAT_BUBBLES, duration: 5},
   {id: KEY_2015_FEDERAL, duration: 10},
   {id: KEY_2015_COLLAPSE, duration: 5},
+  {id: KEY_2016_START, duration: 5},
+  {id: KEY_2016_INTRO, duration: 5},
+  {id: KEY_2016_INTRO_BUBBLES, duration: 5},
+  {id: KEY_2016_COLLAPSE, duration: 5},
+  {id: KEY_2017_START, duration: 5},
+  {id: KEY_2017_UNCONSTITUTIONAL, duration: 5},
+  {id: KEY_2017_UNCONSTITUTIONAL_BUBBLES, duration: 5},
+  {id: KEY_2017_LAWS_CONTINUE, duration: 5},
+  {id: KEY_2017_LAWS_CONTINUE_BUBBLE, duration: 5},
+  {id: KEY_2017_COLLAPSE_TOP, duration: 5},
+  {id: KEY_2017_TARGET_ANYONE, duration: 5},
+  {id: KEY_2017_PUBLISHER, duration: 5},
+  {id: KEY_2017_PUBLISHER_HIGHLIGHT, duration: 5},
+  {id: KEY_2017_CASE_LOST, duration: 5},
+  {id: KEY_2017_SUPREME_COURT, duration: 5},
+  {id: KEY_2017_COLLAPSE_ALL, duration: 5},
+  {id: KEY_2018_START, duration: 5},
+  {id: KEY_2018_INTRO, duration: 5},
+  {id: KEY_2018_INTRO_BUBBLES, duration: 5},
+  {id: KEY_2018_COLLAPSE, duration: 5},
+  {id: KEY_2019_START, duration: 5},
+  {id: KEY_2020_START, duration: 5},
+  {id: KEY_2021_START, duration: 5},
+  {id: KEY_2021_TARGETS_EXPAND, duration: 5},
+  {id: KEY_2021_TARGETS_EXPAND_BUBBLES, duration: 5},
+  {id: KEY_2021_COLLAPSE, duration: 5},
+  {id: KEY_2022_START, duration: 5},
+  {id: KEY_2022_ESG, duration: 5},
+  {id: KEY_2022_ESG_BUBBLES, duration: 5},
+  {id: KEY_2022_COLLAPSE, duration: 5},
+  {id: KEY_2023_START, duration: 5},
+  {id: KEY_2023_TARGETS_EXPAND, duration: 5},
+  {id: KEY_2023_TARGETS_EXPAND_BUBBLES, duration: 5},
+  {id: KEY_2023_COLLAPSE, duration: 10},
 ]
 
 /**

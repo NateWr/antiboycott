@@ -2,13 +2,14 @@
 import { computed } from 'vue';
 import BubbleGroup from './BubbleGroup.vue';
 import {
-  KEY_2015_START,
-  KEY_2015_COPYCAT,
-  KEY_2015_COPYCAT_BUBBLES,
-  KEY_2015_FEDERAL,
-  KEY_2015_COLLAPSE,
-  TRIGGERS
+  TRIGGERS,
+  KEY_2016_INTRO_BUBBLES,
+  KEY_2016_START,
+  KEY_2016_COLLAPSE,
+  KEY_2016_INTRO,
+KEY_2017_UNCONSTITUTIONAL_BUBBLES
 } from '../helpers/timelineKeyframes'
+import { DEFEATED, INEFFECT } from '../helpers/billStatus'
 import type { Law, Trigger } from '../helpers/types';
 import TimelineArrow from './TimelineArrow.vue';
 import TimelineDate from './TimelineDate.vue';
@@ -34,23 +35,27 @@ const props = defineProps({
 })
 
 const laws = computed(() => {
-  return props.allLaws.filter(law => law.year === 2015)
+  return props.allLaws.filter(law => law.year === 2016)
 })
 
 const currentLaws = computed(() => {
-  if (props.fired.find(t => t.id === KEY_2015_FEDERAL)) {
+  if (props.fired.find(t => t.id === KEY_2017_UNCONSTITUTIONAL_BUBBLES)) {
     return laws.value.slice()
-  } else if (props.fired.find(t => t.id === KEY_2015_COPYCAT_BUBBLES)) {
-    return laws.value.slice(0, 12)
+  } else if (props.fired.find(t => t.id === KEY_2016_INTRO_BUBBLES)) {
+    return laws.value.slice().map(law => {
+      return law.status === DEFEATED
+        ? {...law, status: INEFFECT}
+        : law
+    })
   }
   return []
 })
 
 const start = TRIGGERS
-  .find(t => t.id === KEY_2015_START)
+  .find(t => t.id === KEY_2016_START)
   ?.progress
 const end = TRIGGERS
-  .find(t => t.id === KEY_2015_COLLAPSE)
+  .find(t => t.id === KEY_2016_COLLAPSE)
   ?.progress
 
 const yearProgress = computed(() => {
@@ -64,15 +69,12 @@ const yearProgress = computed(() => {
 <template>
   <div class="timeline-year">
     <TimelineArrow :progress="yearProgress" />
-    <TimelineDate :keyframe="keyframe" :target="KEY_2015_START">
-      2015
+    <TimelineDate :keyframe="keyframe" :target="KEY_2016_START">
+      2016
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2015_START" :end="KEY_2015_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2015_COPYCAT ? 'fade-in' : 'fade-out'">
-        Copycat bills are introduced in several states.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2015_FEDERAL ? 'fade-in' : 'fade-out'">
-        Similar legislation is proposed and passed at the federal level.
+    <TimelineText :keyframe="keyframe" :start="KEY_2016_START" :end="KEY_2016_COLLAPSE">
+      <span class="fade" :class="keyframe >= KEY_2016_INTRO ? 'fade-in' : 'fade-out'">
+        The trend picks up pace as legislators across the country try to suppress Americans’ right to boycott.
       </span>
     </TimelineText>
     <BubbleGroup :laws="currentLaws" />

@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="timeline-text" :class="keyframe <= start || keyframe >= end ? 'timeline-text-out' : 'timeline-text-in'">
+  <div class="timeline-text" :class="keyframe < start || keyframe >= end ? 'timeline-text-out' : 'timeline-text-in'">
     <slot />
   </div>
 </template>
@@ -26,7 +26,7 @@ defineProps({
 @import '../assets/css/variables.css';
 
 .timeline-text {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.4;
 }
 
@@ -46,5 +46,11 @@ defineProps({
   transition-property: opacity, max-height, margin;
   transition-duration: 0.3s, 0.3s, 0.3s;
   transition-delay: 0s, 0.3s, 0.3s;
+}
+
+@media (min-width: 360px) {
+  .timeline-text {
+    font-size: 1.25rem;
+  }
 }
 </style>

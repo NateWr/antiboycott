@@ -81,7 +81,7 @@ function onBeforeLeave(el : HTMLElement) {
 
 <template>
   <div class="bubble-group">
-    <TransitionGroup name="bubble" @before-enter="onBeforeEnter" @before-leave="onBeforeLeave">
+    <TransitionGroup name="bubble" @before-enter="onBeforeEnter" @before-leave="onBeforeLeave" appear>
       <span
         v-for="(bubble, index) in bubbles"
         :key="index"
@@ -94,7 +94,7 @@ function onBeforeLeave(el : HTMLElement) {
         <svg viewBox="0 0 26.458333 26.458333" xmlns="http://www.w3.org/2000/svg">
           <use :xlink:href="`#${bubble.svgDef}`" />
         </svg>
-        <transition name="bubble-label">
+        <Transition name="bubble-label" appear>
           <span
             v-if="bubble.label"
             class="bubble-label"
@@ -104,7 +104,7 @@ function onBeforeLeave(el : HTMLElement) {
               {{ bubble.label }}
             </span>
           </span>
-        </transition>
+        </Transition>
       </span>
     </TransitionGroup>
   </div>
@@ -136,11 +136,13 @@ function onBeforeLeave(el : HTMLElement) {
   top: 100%;
   left: 50%;
   transform: translate(-50%, 1rem);
-  white-space: nowrap;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 11rem;
+  text-align: center;
+  line-height: 1;
 }
 
 .bubble-label-line {
@@ -151,7 +153,8 @@ function onBeforeLeave(el : HTMLElement) {
 }
 
 .bubble-label-text {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
+  line-height: 1;
   font-weight: var(--txt-black);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -211,5 +214,13 @@ function onBeforeLeave(el : HTMLElement) {
   & .bubble-label-line {
     border-color: var(--color-red);
   }
+}
+
+@media (min-width: 360px) {
+
+  .bubble-label-text {
+    font-size: 0.75rem;
+  }
+
 }
 </style>

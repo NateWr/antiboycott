@@ -2,12 +2,11 @@
 import { computed } from 'vue';
 import BubbleGroup from './BubbleGroup.vue';
 import {
-  KEY_2015_START,
-  KEY_2015_COPYCAT,
-  KEY_2015_COPYCAT_BUBBLES,
-  KEY_2015_FEDERAL,
-  KEY_2015_COLLAPSE,
-  TRIGGERS
+  TRIGGERS,
+  KEY_2018_COLLAPSE,
+  KEY_2018_START,
+  KEY_2018_INTRO_BUBBLES,
+  KEY_2018_INTRO
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types';
 import TimelineArrow from './TimelineArrow.vue';
@@ -34,23 +33,21 @@ const props = defineProps({
 })
 
 const laws = computed(() => {
-  return props.allLaws.filter(law => law.year === 2015)
+  return props.allLaws.filter(law => law.year === 2018)
 })
 
 const currentLaws = computed(() => {
-  if (props.fired.find(t => t.id === KEY_2015_FEDERAL)) {
+  if (props.fired.find(t => t.id === KEY_2018_INTRO_BUBBLES)) {
     return laws.value.slice()
-  } else if (props.fired.find(t => t.id === KEY_2015_COPYCAT_BUBBLES)) {
-    return laws.value.slice(0, 12)
   }
   return []
 })
 
 const start = TRIGGERS
-  .find(t => t.id === KEY_2015_START)
+  .find(t => t.id === KEY_2018_START)
   ?.progress
 const end = TRIGGERS
-  .find(t => t.id === KEY_2015_COLLAPSE)
+  .find(t => t.id === KEY_2018_COLLAPSE)
   ?.progress
 
 const yearProgress = computed(() => {
@@ -64,15 +61,12 @@ const yearProgress = computed(() => {
 <template>
   <div class="timeline-year">
     <TimelineArrow :progress="yearProgress" />
-    <TimelineDate :keyframe="keyframe" :target="KEY_2015_START">
-      2015
+    <TimelineDate :keyframe="keyframe" :target="KEY_2018_START">
+      2018
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2015_START" :end="KEY_2015_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2015_COPYCAT ? 'fade-in' : 'fade-out'">
-        Copycat bills are introduced in several states.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2015_FEDERAL ? 'fade-in' : 'fade-out'">
-        Similar legislation is proposed and passed at the federal level.
+    <TimelineText :keyframe="keyframe" :start="KEY_2018_START" :end="KEY_2018_COLLAPSE">
+      <span class="fade" :class="keyframe >= KEY_2018_INTRO ? 'fade-in' : 'fade-out'">
+        Democrat and Republication legislators continue to introduce anti-boycott bills.
       </span>
     </TimelineText>
     <BubbleGroup :laws="currentLaws" />
