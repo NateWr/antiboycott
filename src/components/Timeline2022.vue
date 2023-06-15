@@ -66,7 +66,7 @@ const yearProgress = computed(() => {
     </TimelineDate>
     <TimelineText :keyframe="keyframe" :start="KEY_2022_START" :end="KEY_2022_COLLAPSE">
       <span class="fade" :class="keyframe >= KEY_2022_ESG ? 'fade-in' : 'fade-out'">
-        Legislators broaden the attack on activists with bills to block considering
+        Legislators broaden the attack on activists with bills that prevent states from considering the
         <span class="txt-highlight txt-highlight-orange">Environmental, Social,</span>
         <br />
         <span class="txt-highlight txt-highlight-orange">and Governance (ESG)</span> standards of companies where public money is invested.
