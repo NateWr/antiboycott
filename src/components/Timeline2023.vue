@@ -54,7 +54,7 @@ const currentLaws = computed(() => {
         <span class="txt-highlight txt-highlight-orange">Boycotts Act,</span> a model bill drafted by a corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
       </span>
     </TimelineText>
-    <BubbleGroup :laws="currentLaws" />
+    <BubbleGroup :laws="currentLaws" :delay="0.02" />
   </div>
 </template>
 

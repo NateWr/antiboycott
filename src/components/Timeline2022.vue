@@ -72,7 +72,7 @@ const yearProgress = computed(() => {
         <span class="txt-highlight txt-highlight-orange">and Governance (ESG)</span> standards of companies where public money is invested.
       </span>
     </TimelineText>
-    <BubbleGroup :laws="currentLaws" />
+    <BubbleGroup :laws="currentLaws" :delay="0.03" />
   </div>
 </template>
 

@@ -78,6 +78,3 @@ const yearProgress = computed(() => {
     <BubbleGroup :laws="currentLaws" />
   </div>
 </template>
-
-<style lang="postcss">
-</style>

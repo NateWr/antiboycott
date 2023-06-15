@@ -16,6 +16,7 @@ import {
   KEY_2017_CASE_LOST,
   KEY_2017_SUPREME_COURT,
   KEY_2017_COLLAPSE_ALL,
+KEY_2017_PUBLISHER_HIGHLIGHT_END,
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types';
 import { DEFEATED } from '../helpers/billStatus';
@@ -65,7 +66,7 @@ const laws = computed(() => {
 const currentLaws = computed(() => {
   if (keyFired(KEY_2017_LAWS_CONTINUE_BUBBLE)) {
     let currentLaws = laws.value.slice()
-    if (keyFired(KEY_2017_PUBLISHER_HIGHLIGHT) && !keyFired(KEY_2017_COLLAPSE_ALL)) {
+    if (keyFired(KEY_2017_PUBLISHER_HIGHLIGHT) && !keyFired(KEY_2017_PUBLISHER_HIGHLIGHT_END)) {
       let i = getArkansasLawIndex()
       if (i) {
         currentLaws[i] = {
@@ -119,7 +120,7 @@ const yearProgress = computed(() => {
         But legislators keep revising and reintroducing them.
       </span>
     </TimelineText>
-    <BubbleGroup :laws="currentLaws" />
+    <BubbleGroup :laws="currentLaws" class="bubble-group-2017" />
     <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
       <span class="fade" :class="keyframe >= KEY_2017_TARGET_ANYONE ? 'fade-in' : 'fade-out'">
         The laws often target anyone who works with the state. Everyone from public school workers to software contractors are compelled to sign contracts giving up their <strong>right to boycott</strong>.
@@ -144,4 +145,15 @@ const yearProgress = computed(() => {
 </template>
 
 <style lang="postcss">
+@import '../assets/css/variables.css';
+
+/**
+ * 12 bubbles per row, so the Arkansas law
+ * is not too close to one side. This fixes
+ * a bug where the label may appear
+ * off-screen
+ */
+.bubble-group-2017 {
+  max-width: 15rem;
+}
 </style>

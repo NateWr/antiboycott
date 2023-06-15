@@ -11,8 +11,12 @@ import type { Law } from '@/helpers/types'
 const props = defineProps({
   laws: {
     type: Array<Law>,
-    required: true
+    required: true,
   },
+  delay: {
+    type: Number,
+    default: 0.05,
+  }
 })
 
 const BubblesDead = [
@@ -70,12 +74,12 @@ let i = 0;
 
 function onBeforeEnter(el : HTMLElement) {
   i++
-  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * 0.05)}s`
+  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * props.delay)}s`
 }
 
 function onBeforeLeave(el : HTMLElement) {
   i--
-  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * 0.025)}s`
+  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * (props.delay/2))}s`
 }
 </script>
 
