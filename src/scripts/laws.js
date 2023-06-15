@@ -34,7 +34,17 @@ const getCategory = (category) => {
   return categoryMap[category]
 }
 
-const getDate = (dateString) => {
+/**
+ * Get the date of a law in YYYY-MM-DD
+ *
+ * Overrides the date for SB 513 to use correct date in 2017.
+ *
+ * @see https://encyclopediaofarkansas.net/entries/act-710-of-2017-14203/
+ */
+const getDate = (law) => {
+  const dateString = law['Legislation Name'] === 'SB 513'
+    ? 'Date(2017,02,28)'
+    : law['MM/YYYY']
   let parts = dateString
     .replace('Date(', '')
     .replace(')', '')
@@ -45,18 +55,21 @@ const getDate = (dateString) => {
 
 const parser = new PublicGoogleSheetsParser()
 parser.parse(spreadsheetId, {sheetId: tabId}).then((items) => {
-  const laws = items.map(law => {
-    const date = getDate(law['MM/YYYY'])
-    return {
-      name: law['Legislation Name'],
-      state: law.State,
-      category: getCategory(law.Category),
-      year: date.getFullYear(),
-      date: date.toISOString().split('T')[0],
-      status: getStatus(law.Status),
-      url: law['Law Details'] ? law['Law Details'] : ''
-    }
-  })
+  const laws = items
+    .map(law => {
+      const date = getDate(law)
+      return {
+        name: law['Legislation Name'],
+        state: law.State,
+        category: getCategory(law.Category),
+        year: date.getFullYear(),
+        date: date.toISOString().split('T')[0],
+        status: getStatus(law.Status),
+        url: law['Law Details'] ? law['Law Details'] : ''
+      }
+    })
+    .sort((a, b) => a.date >= b.date)
+
   fs.writeFileSync('public/laws.json', JSON.stringify(laws))
 })
 
