@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, type ComponentPublicInstance } from 'vue'
 import debounce from 'debounce'
 import {
+KEY_2016_COLLAPSE,
   KEY_2017_START,
   KEY_2021_START,
   KEY_2022_START,
@@ -43,6 +44,17 @@ const innerFrame = ref(null)
 const collapsed = ref<boolean>(false)
 const laws = ref<Law[]>([])
 const bubblesSvg = ref<string>('')
+const timelineOffset = ref<number>(0)
+const year2014 = ref<InstanceType<typeof Timeline2014> | null>(null)
+const year2015 = ref<InstanceType<typeof Timeline2015> | null>(null)
+const year2016 = ref<InstanceType<typeof Timeline2016> | null>(null)
+const year2017 = ref<InstanceType<typeof Timeline2017> | null>(null)
+const year2018 = ref<InstanceType<typeof Timeline2018> | null>(null)
+const year2019 = ref<InstanceType<typeof Timeline2019> | null>(null)
+const year2020 = ref<InstanceType<typeof Timeline2020> | null>(null)
+const year2021 = ref<InstanceType<typeof Timeline2021> | null>(null)
+const year2022 = ref<InstanceType<typeof Timeline2022> | null>(null)
+const year2023 = ref<InstanceType<typeof Timeline2023> | null>(null)
 
 const timelineProgress = computed(() => {
   if (props.stepsCompleted.includes(stepName)) {
@@ -111,19 +123,66 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
   }
 })
 
-const timelineStyle = computed(() => {
-  if (fired.value.find(t => t.id === KEY_2023_START)) {
-    return 'top: -68rem';
-  } else if (fired.value.find(t => t.id === KEY_2022_START)) {
-    return 'top: -60rem';
-  } else if (fired.value.find(t => t.id === KEY_2021_START)) {
-    return 'top: -50rem';
-  } else if (fired.value.find(t => t.id === KEY_2018_START)) {
-    return 'top: -30rem';
-  } else if (fired.value.find(t => t.id === KEY_2017_START)) {
-    return 'top: -22rem';
+const setTimelineOffset = (years : Array<ComponentPublicInstance>, delay : number = 300) => {
+  delay = delay || 300
+  setTimeout(() => {
+    const height = years.reduce<number>((height, year) => {
+      return height + year.value?.$el.clientHeight
+    }, 0)
+    timelineOffset.value = (height - 16) * -1
+  }, delay)
+}
+
+watch(() => keyframe.value, async(newVal, oldVal) => {
+  if (keyframe.value >= KEY_2023_START) {
+    setTimelineOffset([
+      year2014,
+      year2015,
+      year2016,
+      year2017,
+      year2018,
+      year2019,
+      year2020,
+      year2021,
+      year2022,
+    ])
+  } else if (keyframe.value >= KEY_2022_START) {
+    setTimelineOffset([
+      year2014,
+      year2015,
+      year2016,
+      year2017,
+      year2018,
+      year2019,
+      year2020,
+      year2021,
+    ])
+  } else if (keyframe.value >= KEY_2021_START) {
+    setTimelineOffset([
+      year2014,
+      year2015,
+      year2016,
+      year2017,
+      year2018,
+      year2019,
+      year2020,
+    ])
+  } else if (keyframe.value >= KEY_2018_START) {
+    setTimelineOffset([
+      year2014,
+      year2015,
+      year2016,
+      year2017
+    ])
+  } else if (keyframe.value >= KEY_2017_START) {
+    setTimelineOffset([
+      year2014,
+      year2015,
+      year2016,
+    ])
+  } else {
+    timelineOffset.value = 0
   }
-  return '';
 })
 
 onMounted(() => {
@@ -146,18 +205,18 @@ onMounted(() => {
     <div
       class="timeline-frame"
       ref="innerFrame"
-      :style="timelineStyle"
+      :style="`top: ${timelineOffset}px`"
     >
-      <Timeline2014 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2015 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2016 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2017 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2018 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2019 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2020 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2021 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2022 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
-      <Timeline2023 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" />
+      <Timeline2014 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2014" />
+      <Timeline2015 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2015" />
+      <Timeline2016 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2016" />
+      <Timeline2017 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2017" />
+      <Timeline2018 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2018" />
+      <Timeline2019 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2019" />
+      <Timeline2020 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2020" />
+      <Timeline2021 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2021" />
+      <Timeline2022 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2022" />
+      <Timeline2023 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2023" />
     </div>
     <span v-if="bubblesSvg" v-html="bubblesSvg" hidden aria-hidden="true"/>
   </div>
