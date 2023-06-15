@@ -227,6 +227,9 @@ onMounted(() => {
 
 .timeline {
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50rem;
   padding-left: 4vw;
   padding-right: 4vw;
   height: 1500rem;
@@ -253,9 +256,14 @@ onMounted(() => {
   position: relative;
   padding-top: 1rem;
   padding-left: 2rem;
+}
 
-  & .bubble-group {
-    padding-bottom: 1rem;
+@media (orientation: portrait) {
+
+  @media (--tablets-sm) {
+    .timeline-year {
+      padding-left: 3rem;
+    }
   }
 }
 </style>

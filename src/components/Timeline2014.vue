@@ -117,6 +117,23 @@ const yearProgress = computed(() => {
 
 .bubble-group-2014-big {
   transform: scale(1.7, 1.7);
-  gap: 0.125rem
+  gap: 0.125rem;
+
+  & .bubble-label-text {
+    transform: scale(0.6, 0.6);
+  }
+}
+
+@media (orientation: portrait) {
+
+  @media (--tablets-sm) {
+    .bubble-group-2014 {
+      width: 20rem;
+    }
+
+    .bubble-group-2014-big {
+      gap: 0.25rem
+    }
+  }
 }
 </style>

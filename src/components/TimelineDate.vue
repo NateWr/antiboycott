@@ -37,7 +37,7 @@ defineProps({
   padding-left: 0.5em;
   font-size: 1.25rem;
   font-weight: var(--txt-regular);
-  line-height: 1rem;
+  line-height: 1;
   opacity: 0;
   transform: translateX(-1em);
   transition: all 0.3s 0.3s;
@@ -73,6 +73,33 @@ defineProps({
   .timeline-date-dot {
     width: 1rem;
     height: 1rem;
+  }
+}
+
+@media (orientation: portrait) {
+
+  .timeline-date-active {
+    .timeline-date-marker {
+      width: 8vh;
+    }
+  }
+
+  @media (--tablets-sm) {
+    .timeline-date {
+      margin-left: -3rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-date-text {
+      font-size: 2rem;
+    }
+
+    .timeline-date-active {
+      .timeline-date-dot {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
   }
 }
 </style>

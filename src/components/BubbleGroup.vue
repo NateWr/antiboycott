@@ -122,6 +122,7 @@ function onBeforeLeave(el : HTMLElement) {
   flex-wrap: wrap;
   gap: 0.25rem;
   max-width: 15rem;
+  padding-bottom: 1rem;
 }
 
 .bubble {
@@ -145,7 +146,6 @@ function onBeforeLeave(el : HTMLElement) {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  width: 11rem;
   text-align: center;
   line-height: 1;
 }
@@ -164,6 +164,7 @@ function onBeforeLeave(el : HTMLElement) {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   opacity: 1;
+  width: 12em;
   transform: translateY(0);
   transition: all 0.3s 0.3s;
 }
@@ -226,6 +227,28 @@ function onBeforeLeave(el : HTMLElement) {
   .bubble-label-text {
     font-size: 0.75rem;
   }
+}
 
+@media (orientation: portrait) {
+
+  @media (--tablets-sm) {
+
+    .bubble-group {
+      gap: 0.5rem;
+      max-width: 30rem;
+      padding-bottom: 2rem;
+    }
+
+    .bubble {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+      transition: width 1s 0.6s, height 1s 0.6s, opacity 0.15s;
+    }
+
+    .bubble-label-text {
+      font-size: 1.5rem;
+    }
+  }
 }
 </style>

@@ -53,4 +53,16 @@ defineProps({
     font-size: 1.25rem;
   }
 }
+
+@media (orientation: portrait) {
+
+  @media (--tablets-sm) {
+    .timeline-text {
+      font-size: 1.8rem;
+    }
+    .timeline-text-in {
+      margin-bottom: 2rem;
+    }
+  }
+}
 </style>

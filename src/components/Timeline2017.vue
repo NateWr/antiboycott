@@ -120,7 +120,7 @@ const yearProgress = computed(() => {
         But legislators keep revising and reintroducing them.
       </span>
     </TimelineText>
-    <BubbleGroup :laws="currentLaws" class="bubble-group-2017" />
+    <BubbleGroup :laws="currentLaws" />
     <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
       <span class="fade" :class="keyframe >= KEY_2017_TARGET_ANYONE ? 'fade-in' : 'fade-out'">
         The laws often target anyone who works with the state. Everyone from public school workers to software contractors are compelled to sign contracts giving up their <strong>right to boycott</strong>.
@@ -143,17 +143,3 @@ const yearProgress = computed(() => {
     </TimelineText>
   </div>
 </template>
-
-<style lang="postcss">
-@import '../assets/css/variables.css';
-
-/**
- * 12 bubbles per row, so the Arkansas law
- * is not too close to one side. This fixes
- * a bug where the label may appear
- * off-screen
- */
-.bubble-group-2017 {
-  max-width: 15rem;
-}
-</style>

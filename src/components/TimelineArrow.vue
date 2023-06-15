@@ -47,4 +47,14 @@ defineProps({
 .timeline-arrow-in:after {
   opacity: 1;
 }
+
+@media (orientation: portrait) {
+
+  @media (--tablets-sm) {
+    .timeline-arrow {
+      left: 0.75rem;
+    }
+  }
+}
+
 </style>
