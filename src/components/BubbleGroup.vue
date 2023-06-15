@@ -121,6 +121,7 @@ function onBeforeLeave(el : HTMLElement) {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
+  max-width: 15rem;
 }
 
 .bubble {

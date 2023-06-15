@@ -50,8 +50,11 @@ const currentLaws = computed(() => {
     <TimelineText :keyframe="keyframe" :start="KEY_2023_START" :end="KEY_2023_COLLAPSE">
       <span class="fade" :class="keyframe >= KEY_2023_TARGETS_EXPAND ? 'fade-in' : 'fade-out'">
         Legislators use the
-        <span class="txt-highlight txt-highlight-orange">Eliminate Economic</span>
-        <span class="txt-highlight txt-highlight-orange">Boycotts Act,</span> a model bill drafted by a corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
+        <span class="txt-highlight txt-highlight-orange">Eliminate</span>
+        <span class="txt-highlight txt-highlight-orange">Economic</span>
+        <span class="txt-highlight txt-highlight-orange">Boycotts</span>
+        <span class="txt-highlight txt-highlight-orange">Act,</span>
+        a model bill drafted by a corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
       </span>
     </TimelineText>
     <BubbleGroup :laws="currentLaws" :delay="0.02" />
@@ -60,6 +63,13 @@ const currentLaws = computed(() => {
 
 <style lang="postcss">
 @import '../assets/css/variables.css';
+
+.timeline-year-2023 {
+
+  & .bubble-group {
+    max-width: 20rem;
+  }
+}
 
 .partial-year-months {
   font-size: 0.75rem;
