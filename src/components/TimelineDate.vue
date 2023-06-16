@@ -102,4 +102,12 @@ defineProps({
     }
   }
 }
+
+@media (orientation: landscape) {
+
+  .timeline-date {
+    margin-bottom: 0.5rem;
+    margin-left: -0.5rem;
+  }
+}
 </style>

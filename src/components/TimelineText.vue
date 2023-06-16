@@ -65,4 +65,12 @@ defineProps({
     }
   }
 }
+
+@media (orientation: landscape) {
+
+  .timeline-text {
+    padding-left: 1rem;
+    font-size: 0.85rem;
+  }
+}
 </style>

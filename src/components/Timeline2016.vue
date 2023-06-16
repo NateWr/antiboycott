@@ -72,11 +72,13 @@ const yearProgress = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2016_START">
       2016
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2016_START" :end="KEY_2016_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2016_INTRO ? 'fade-in' : 'fade-out'">
-        The trend picks up pace as legislators across the country try to suppress Americans’ right to boycott.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2016_START" :end="KEY_2016_COLLAPSE">
+        <span class="fade" :class="keyframe >= KEY_2016_INTRO ? 'fade-in' : 'fade-out'">
+          The trend picks up pace as legislators across the country try to suppress Americans’ right to boycott.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" />
   </div>
 </template>

@@ -112,34 +112,38 @@ const yearProgress = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2017_START">
       2017
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2017_START" :end="KEY_2017_COLLAPSE_TOP">
-      <span class="fade" :class="keyframe >= KEY_2017_UNCONSTITUTIONAL ? 'fade-in' : 'fade-out'">
-        Plaintiffs begin suing to protect their rights, leading federal courts to strike down several laws as <strong>unconstitutional</strong>.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2017_LAWS_CONTINUE ? 'fade-in' : 'fade-out'">
-        But legislators keep revising and reintroducing them.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2017_START" :end="KEY_2017_COLLAPSE_TOP">
+        <span class="fade" :class="keyframe >= KEY_2017_UNCONSTITUTIONAL ? 'fade-in' : 'fade-out'">
+          Plaintiffs begin suing to protect their rights, leading federal courts to strike down several laws as <strong>unconstitutional</strong>.
+        </span>
+        <span class="fade" :class="keyframe >= KEY_2017_LAWS_CONTINUE ? 'fade-in' : 'fade-out'">
+          But legislators keep revising and reintroducing them.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" />
-    <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
-      <span class="fade" :class="keyframe >= KEY_2017_TARGET_ANYONE ? 'fade-in' : 'fade-out'">
-        The laws often target anyone who works with the state. Everyone from public school workers to software contractors are compelled to sign contracts giving up their <strong>right to boycott</strong>.
-      </span>
-    </TimelineText>
-    <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
-      <span class="fade" :class="keyframe >= KEY_2017_PUBLISHER ? 'fade-in' : 'fade-out'">
-        The publisher of Arkansas Times, a newspaper in Little Rock, is asked to sign the anti-boycott pledge before the local university will advertise in the paper. Instead, he launches a <strong>suit against the state</strong>.
-      </span>
-    </TimelineText>
-    <TimelineText :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
-      <span class="fade" :class="keyframe >= KEY_2017_CASE_LOST ? 'fade-in' : 'fade-out'">
-        The paper loses the case, wins on appeal, and loses again in a later appeal.
-      </span>
-    </TimelineText>
-    <TimelineText :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
-      <span class="fade" :class="keyframe >= KEY_2017_SUPREME_COURT ? 'fade-in' : 'fade-out'">
-        By 2023, it has reached the U.S. Supreme Court, but the justices <strong>decline to review the case</strong>, leaving it up to lower courts to decide whether or not to protect the right to boycott.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
+        <span class="fade" :class="keyframe >= KEY_2017_TARGET_ANYONE ? 'fade-in' : 'fade-out'">
+          The laws often target anyone who works with the state. Everyone from public school workers to software contractors are compelled to sign contracts giving up their <strong>right to boycott</strong>.
+        </span>
+      </TimelineText>
+      <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
+        <span class="fade" :class="keyframe >= KEY_2017_PUBLISHER ? 'fade-in' : 'fade-out'">
+          The publisher of Arkansas Times, a newspaper in Little Rock, is asked to sign the anti-boycott pledge before the local university will advertise in the paper. Instead, he launches a <strong>suit against the state</strong>.
+        </span>
+      </TimelineText>
+      <TimelineText :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
+        <span class="fade" :class="keyframe >= KEY_2017_CASE_LOST ? 'fade-in' : 'fade-out'">
+          The paper loses the case, wins on appeal, and loses again in a later appeal.
+        </span>
+      </TimelineText>
+      <TimelineText :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
+        <span class="fade" :class="keyframe >= KEY_2017_SUPREME_COURT ? 'fade-in' : 'fade-out'">
+          By 2023, it has reached the U.S. Supreme Court, but the justices <strong>decline to review the case</strong>, leaving it up to lower courts to decide whether or not to protect the right to boycott.
+        </span>
+      </TimelineText>
+    </div>
   </div>
 </template>

@@ -67,14 +67,16 @@ const yearProgress = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2015_START">
       2015
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2015_START" :end="KEY_2015_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2015_COPYCAT ? 'fade-in' : 'fade-out'">
-        Copycat bills are introduced in several states.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2015_FEDERAL ? 'fade-in' : 'fade-out'">
-        Similar legislation is proposed and passed at the federal level.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2015_START" :end="KEY_2015_COLLAPSE">
+        <span class="fade" :class="keyframe >= KEY_2015_COPYCAT ? 'fade-in' : 'fade-out'">
+          Copycat bills are introduced in several states.
+        </span>
+        <span class="fade" :class="keyframe >= KEY_2015_FEDERAL ? 'fade-in' : 'fade-out'">
+          Similar legislation is proposed and passed at the federal level.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" />
   </div>
 </template>

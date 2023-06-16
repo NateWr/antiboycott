@@ -266,4 +266,37 @@ onMounted(() => {
     }
   }
 }
+
+@media (orientation: landscape) {
+
+  .timeline-frame {
+    padding-top: 1rem;
+  }
+
+  .timeline-year {
+    display: grid;
+    grid-template-columns: [bubbles] 50% [text] 50% [end];
+    grid-template-rows: [date] auto [content] auto [end];
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .timeline-date {
+    grid-column-start: text;
+    grid-row-start: date;
+  }
+
+  .timeline-text-group {
+    grid-column-start: text;
+    grid-row-start: content;
+  }
+
+  .bubble-group {
+    grid-column-start: bubbles;
+    grid-row-start: content;
+    justify-self: end;
+    transform-origin: right top;
+    margin-inline-end: 1rem;
+  }
+}
 </style>

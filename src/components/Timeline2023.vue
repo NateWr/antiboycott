@@ -47,16 +47,18 @@ const currentLaws = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2023_START">
       2023 <span class="partial-year-months">(JAN-MAR)</span>
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2023_START" :end="KEY_2023_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2023_TARGETS_EXPAND ? 'fade-in' : 'fade-out'">
-        Legislators use the
-        <span class="txt-highlight txt-highlight-orange">Eliminate</span>
-        <span class="txt-highlight txt-highlight-orange">Economic</span>
-        <span class="txt-highlight txt-highlight-orange">Boycotts</span>
-        <span class="txt-highlight txt-highlight-orange">Act,</span>
-        a model bill drafted by a corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2023_START" :end="KEY_2023_COLLAPSE">
+        <span class="fade" :class="keyframe >= KEY_2023_TARGETS_EXPAND ? 'fade-in' : 'fade-out'">
+          Legislators use the
+          <span class="txt-highlight txt-highlight-orange">Eliminate</span>
+          <span class="txt-highlight txt-highlight-orange">Economic</span>
+          <span class="txt-highlight txt-highlight-orange">Boycotts</span>
+          <span class="txt-highlight txt-highlight-orange">Act,</span>
+          a model bill drafted by a corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" :delay="0.02" />
   </div>
 </template>

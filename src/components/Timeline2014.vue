@@ -87,20 +87,22 @@ const yearProgress = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2014_START">
       2014
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2014_START" :end="KEY_2014_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2014_INTRO ? 'fade-in' : 'fade-out'">
-        Eight bills are introduced in January.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2014_INEFFECT ? 'fade-in' : 'fade-out'">
-        Two of them — in Maryland and Pennsylvania — are voted in and remain in effect today.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2014_DEAD ? 'fade-in' : 'fade-out'">
-        The rest are defeated or withdrawn without a vote.
-      </span>
-      <span class="fade" :class="keyframe >= KEY_2014_YEAREND ? 'fade-in' : 'fade-out'">
-        By the end of the year 18 anti-boycott bills have been introduced.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2014_START" :end="KEY_2014_COLLAPSE">
+        <span class="fade" :class="keyframe >= KEY_2014_INTRO ? 'fade-in' : 'fade-out'">
+          Eight bills are introduced in January.
+        </span>
+        <span class="fade" :class="keyframe >= KEY_2014_INEFFECT ? 'fade-in' : 'fade-out'">
+          Two of them — in Maryland and Pennsylvania — are voted in and remain in effect today.
+        </span>
+        <span class="fade" :class="keyframe >= KEY_2014_DEAD ? 'fade-in' : 'fade-out'">
+          The rest are defeated or withdrawn without a vote.
+        </span>
+        <span class="fade" :class="keyframe >= KEY_2014_YEAREND ? 'fade-in' : 'fade-out'">
+          By the end of the year 18 anti-boycott bills have been introduced.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" class="bubble-group-2014" :class="keyframe < KEY_2014_COLLAPSE ? 'bubble-group-2014-big' : ''"/>
   </div>
 </template>
@@ -109,7 +111,7 @@ const yearProgress = computed(() => {
 @import '../assets/css/variables.css';
 
 .bubble-group-2014 {
-  width: 10rem;
+  width: 9.8rem; /* 8 bubbles per row */
   transform: scale(1, 1);
   transform-origin: left top;
   transition: all 0.6s 0.6s;

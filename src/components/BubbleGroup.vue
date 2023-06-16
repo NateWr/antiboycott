@@ -251,4 +251,16 @@ function onBeforeLeave(el : HTMLElement) {
     }
   }
 }
+
+@media (orientation: landscape) {
+
+  .bubble-group {
+    flex-direction: row-reverse;
+    padding-bottom: 0.5rem;
+  }
+
+  .bubble-label-line {
+    height: 2rem;
+  }
+}
 </style>

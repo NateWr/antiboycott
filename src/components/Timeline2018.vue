@@ -64,11 +64,13 @@ const yearProgress = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2018_START">
       2018
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2018_START" :end="KEY_2018_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2018_INTRO ? 'fade-in' : 'fade-out'">
-        Democrat and Republication legislators continue to introduce anti-boycott bills.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2018_START" :end="KEY_2018_COLLAPSE">
+        <span class="fade" :class="keyframe >= KEY_2018_INTRO ? 'fade-in' : 'fade-out'">
+          Democrat and Republican legislators continue to introduce anti-boycott bills.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" />
   </div>
 </template>

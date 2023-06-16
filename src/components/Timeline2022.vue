@@ -64,17 +64,19 @@ const yearProgress = computed(() => {
     <TimelineDate :keyframe="keyframe" :target="KEY_2022_START">
       2022
     </TimelineDate>
-    <TimelineText :keyframe="keyframe" :start="KEY_2022_START" :end="KEY_2022_COLLAPSE">
-      <span class="fade" :class="keyframe >= KEY_2022_ESG ? 'fade-in' : 'fade-out'">
-        Legislators broaden the attack on activists with bills that prevent states from considering the
-        <span class="txt-highlight txt-highlight-orange">Environmental,</span>
-        <span class="txt-highlight txt-highlight-orange">Social,</span>
-        <span class="txt-highlight txt-highlight-orange">and</span>
-        <span class="txt-highlight txt-highlight-orange">Governance</span>
-        <span class="txt-highlight txt-highlight-orange">(ESG)</span>
-        standards of companies where public money is invested.
-      </span>
-    </TimelineText>
+    <div class="timeline-text-group">
+      <TimelineText :keyframe="keyframe" :start="KEY_2022_START" :end="KEY_2022_COLLAPSE">
+        <span class="fade" :class="keyframe >= KEY_2022_ESG ? 'fade-in' : 'fade-out'">
+          Legislators broaden the attack on activists with bills that prevent states from considering the
+          <span class="txt-highlight txt-highlight-orange">Environmental,</span>
+          <span class="txt-highlight txt-highlight-orange">Social,</span>
+          <span class="txt-highlight txt-highlight-orange">and</span>
+          <span class="txt-highlight txt-highlight-orange">Governance</span>
+          <span class="txt-highlight txt-highlight-orange">(ESG)</span>
+          standards of companies where public money is invested.
+        </span>
+      </TimelineText>
+    </div>
     <BubbleGroup :laws="currentLaws" :delay="0.03" />
   </div>
 </template>

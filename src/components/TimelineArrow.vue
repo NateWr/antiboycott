@@ -57,4 +57,12 @@ defineProps({
   }
 }
 
+@media (orientation: landscape) {
+
+  .timeline-arrow {
+    top: 0.5rem;
+    left: 50%;
+  }
+}
+
 </style>
