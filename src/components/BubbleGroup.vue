@@ -240,10 +240,8 @@ function onBeforeLeave(el : HTMLElement) {
     }
 
     .bubble {
-      position: relative;
       width: 2rem;
       height: 2rem;
-      transition: width 1s 0.6s, height 1s 0.6s, opacity 0.15s;
     }
 
     .bubble-label-text {
@@ -261,6 +259,35 @@ function onBeforeLeave(el : HTMLElement) {
 
   .bubble-label-line {
     height: 2rem;
+  }
+
+  @media (--tablets-landscape) {
+    .bubble-group {
+      padding-bottom: 1rem;
+      max-width: none;
+      gap: 0.3rem;
+    }
+
+    .bubble {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+
+    .bubble-label-line {
+      height: 3rem;
+    }
+
+    .bubble-label-text {
+      font-size: 1rem;
+    }
+  }
+
+  @media (--laptops) {
+
+    .bubble {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }
 </style>

@@ -298,5 +298,33 @@ onMounted(() => {
     transform-origin: right top;
     margin-inline-end: 1rem;
   }
+
+  @media (--tablets-landscape) {
+    .timeline {
+        max-width: 60rem;
+    }
+
+    .timeline-frame {
+      padding-top: 2rem;
+    }
+
+    .bubble-group {
+      margin-inline-end: 2rem;
+    }
+  }
+
+  @media (--laptops) {
+    .timeline {
+        max-width: 74rem;
+    }
+
+    .timeline-frame {
+      padding-top: 8rem;
+    }
+
+    .bubble-group {
+      margin-inline-end: 3rem;
+    }
+  }
 }
 </style>

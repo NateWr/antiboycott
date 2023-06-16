@@ -69,7 +69,7 @@ const currentLaws = computed(() => {
 .timeline-year-2023 {
 
   & .bubble-group {
-    max-width: 20rem;
+    max-width: none;
   }
 }
 
@@ -82,13 +82,5 @@ const currentLaws = computed(() => {
   position: relative;
   top: -0.25em;
   left: 0.5em;
-}
-
-@media (orientation: portrait) {
-  @media (--tablets-sm) {
-    .timeline-year-2023 .bubble-group {
-      max-width: 40rem;
-    }
-  }
 }
 </style>

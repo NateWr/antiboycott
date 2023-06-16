@@ -69,8 +69,24 @@ defineProps({
 @media (orientation: landscape) {
 
   .timeline-text {
-    padding-left: 1rem;
+    padding-inline-start: 1rem;
     font-size: 0.85rem;
+  }
+
+  @media (--tablets-landscape) {
+
+    .timeline-text {
+      padding-inline-start: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (--laptops) {
+
+    .timeline-text {
+      padding-inline-start: 3rem;
+      font-size: 1.75rem;
+    }
   }
 }
 </style>

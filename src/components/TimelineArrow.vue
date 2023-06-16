@@ -63,6 +63,18 @@ defineProps({
     top: 0.5rem;
     left: 50%;
   }
+
+  @media (--tablets-landscape) {
+    .timeline-arrow {
+      top: 1rem;
+    }
+  }
+
+  @media (--laptops) {
+    .timeline-arrow {
+      top: 1.5rem;
+    }
+  }
 }
 
 </style>

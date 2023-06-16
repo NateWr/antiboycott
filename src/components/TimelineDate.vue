@@ -109,5 +109,25 @@ defineProps({
     margin-bottom: 0.5rem;
     margin-left: -0.5rem;
   }
+
+  @media(--tablets-landscape) {
+    .timeline-date {
+      margin-bottom: 1rem;
+    }
+
+    .timeline-date-text {
+      font-size: 2rem;
+    }
+  }
+
+  @media(--laptops) {
+    .timeline-date {
+      margin-bottom: 2rem;
+    }
+
+    .timeline-date-text {
+      font-size: 3rem;
+    }
+  }
 }
 </style>

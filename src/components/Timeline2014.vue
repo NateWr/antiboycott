@@ -130,11 +130,24 @@ const yearProgress = computed(() => {
 
   @media (--tablets-sm) {
     .bubble-group-2014 {
-      width: 20rem;
+      width: 19.6rem;
     }
 
     .bubble-group-2014-big {
       gap: 0.25rem
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  @media (--tablets-landscape) {
+    .bubble-group-2014 {
+      width: 16.5rem;
+    }
+  }
+  @media (--laptops) {
+    .bubble-group-2014 {
+      width: 18.5rem;
     }
   }
 }
