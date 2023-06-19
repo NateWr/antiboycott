@@ -235,6 +235,45 @@ const offset = computed(() => {
   color: var(--color-black);
   padding-bottom: 2rem;
   transition: all 1s;
+
+  @media (orientation: portrait) {
+
+    @media (min-width: 445px) {
+      background-image: url('img/paper-background-600w.webp');
+    }
+
+    @media (--tablets-sm) {
+      background-image: url('img/paper-background-800w.webp');
+    }
+
+    @media (min-resolution: 2dppx) {
+      background-image: url('img/paper-background-800w.webp');
+
+      @media (min-width: 445px) {
+        background-image: url('img/paper-background-1200w.webp');
+      }
+    }
+  }
+
+  @media (orientation: landscape) {
+
+    @media (--tablets-sm) {
+      background-image: url('img/paper-background-600w.webp');
+    }
+
+    @media (min-width: 1134px) {
+      background-image: url('img/paper-background-800w.webp');
+    }
+
+    @media (min-resolution: 2dppx) {
+      background-image: url('img/paper-background-800w.webp');
+
+      @media (--tablets-sm) {
+        background-image: url('img/paper-background-1200w.webp');
+      }
+    }
+  }
+
 }
 
 .template-bill-out {
