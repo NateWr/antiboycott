@@ -289,7 +289,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
   height: 100%;
   transform: translateX(-50%);
   mix-blend-mode: difference;
-  background: #f7bd90; /* close to --color-orange against background */
+  background: var(--color-orange-blend-difference);
   transition: width 0.3s 0.6s;
 }
 

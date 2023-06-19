@@ -5,6 +5,7 @@ import BoycottHistory from './components/BoycottHistory.vue'
 import TimeLine from './components/TimeLine.vue';
 import ModelBills from './components/ModelBills.vue';
 import TemplateRepression from './components/TemplateRepression.vue';
+import CreditsBlock from './components/CreditsBlock.vue';
 
 const stepsStarted = ref<string[]>([])
 const stepsCompleted = ref<string[]>([])
@@ -113,7 +114,12 @@ onMounted(() => {
       :steps-completed="stepsCompleted"
       :steps-started="stepsStarted"
     />
-    <div data-step="end" aria-hidden="true">THE END</div>
+    <CreditsBlock
+      :progress="progress"
+      :step="step"
+      :steps-completed="stepsCompleted"
+      :steps-started="stepsStarted"
+    />
   </div>
 </template>
 
@@ -149,13 +155,6 @@ onMounted(() => {
   &:not([hidden]) {
     opacity: 1;
   }
-}
-
-[data-step="end"] {
-  display: flex;
-  justify-content: center;
-  font-size: 3rem;
-  padding-bottom: 1000rem;
 }
 
 @media (--tablets-sm) {

@@ -5,6 +5,7 @@
   --color-green: #91E681;
   --color-green-dark: #7DB034;
   --color-orange: #FD9647;
+  --color-orange-blend-difference: #f7bd90; /* close to --color-orange against background with mix-blend-mode: difference */
   --color-purple: #AD96FF;
   --color-red: #FF3D3D;
   --color-white: #fff;
