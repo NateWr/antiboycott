@@ -3,6 +3,8 @@ import scrollama from 'scrollama';
 import { onMounted, ref } from 'vue';
 import BoycottHistory from './components/BoycottHistory.vue'
 import TimeLine from './components/TimeLine.vue';
+import ModelBills from './components/ModelBills.vue';
+import TemplateRepression from './components/TemplateRepression.vue';
 
 const stepsStarted = ref<string[]>([])
 const stepsCompleted = ref<string[]>([])
@@ -94,6 +96,18 @@ onMounted(() => {
       :steps-started="stepsStarted"
     />
     <TimeLine
+      :progress="progress"
+      :step="step"
+      :steps-completed="stepsCompleted"
+      :steps-started="stepsStarted"
+    />
+    <ModelBills
+      :progress="progress"
+      :step="step"
+      :steps-completed="stepsCompleted"
+      :steps-started="stepsStarted"
+    />
+    <TemplateRepression
       :progress="progress"
       :step="step"
       :steps-completed="stepsCompleted"

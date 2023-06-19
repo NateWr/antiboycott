@@ -7,9 +7,11 @@ const outputDir = './public/img'
 // Clean up existing files
 fs.readdirSync(outputDir)
   .forEach(file => {
-    fs.rmSync(
-      path.join(outputDir, file)
-    )
+    if (!file.includes('.svg')) {
+      fs.rmSync(
+        path.join(outputDir, file)
+      )
+    }
   })
 
 /**
@@ -64,5 +66,23 @@ const processBackground = () => {
     .toFile(`${outputDir}/${slug}.jpg`)
 }
 
+/**
+ * Generate responsive image sizes for bill's paper background
+ */
+const processPaper = () => {
+  const slug = 'paper-background';
+  const source = `./src/assets/img/${slug}.png`
+  const widths = [400, 600, 800, 1200]
+
+  widths.forEach(size => {
+    const filename = `${slug}-${size}w`
+    sharp(source)
+      .resize(size)
+      .webp({quality: 70})
+      .toFile(`${outputDir}/${filename}.webp`)
+  })
+}
+
 processHeroImage()
 processBackground()
+processPaper()

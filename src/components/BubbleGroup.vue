@@ -222,7 +222,7 @@ function onBeforeLeave(el : HTMLElement) {
   }
 }
 
-@media (min-width: 360px) {
+@media (--mobiles-normal) {
 
   .bubble-label-text {
     font-size: 0.75rem;

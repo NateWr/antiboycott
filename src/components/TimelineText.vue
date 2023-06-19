@@ -48,7 +48,7 @@ defineProps({
   transition-delay: 0s, 0.3s, 0.3s;
 }
 
-@media (min-width: 360px) {
+@media (--mobiles-normal) {
   .timeline-text {
     font-size: 1.25rem;
   }

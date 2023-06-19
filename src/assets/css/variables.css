@@ -3,6 +3,7 @@
   --color-blue: #42C0E2;
   --color-dark-blue: #213751;
   --color-green: #91E681;
+  --color-green-dark: #7DB034;
   --color-orange: #FD9647;
   --color-purple: #AD96FF;
   --color-red: #FF3D3D;
@@ -15,6 +16,7 @@
   --txt-heavy: 800;
   --txt-black: 900;
 
+  @custom-media --mobiles-normal (min-width: 360px);
   @custom-media --tablets-sm (min-width: 720px);
   @custom-media --tablets (min-width: 834px);
   @custom-media --tablets-landscape (min-width: 1024px);

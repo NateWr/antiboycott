@@ -84,7 +84,6 @@ watch(() => timelineProgress.value, async(newVal, oldVal) => {
     for (let trigger of pending.value) {
       if (trigger.progress <= newVal) {
         fired.value.push(trigger)
-        // triggered.value.push(trigger.id)
         pending.value.shift()
       } else {
         break;
