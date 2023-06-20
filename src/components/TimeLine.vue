@@ -36,6 +36,8 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['loadError'])
+
 const stepName: string = 'timeline'
 const laws = ref<Law[]>([])
 const bubblesSvg = ref<string>('')
@@ -158,16 +160,22 @@ watch(() => keyframe.value, async(newVal, oldVal) => {
 })
 
 onMounted(() => {
-  fetch('laws.json')
-    .then(r => r.json())
-    .then(r => {
-      laws.value = r
-    })
-  fetch('img/bubbles.svg')
-    .then(r => r.text())
-    .then(r => {
-      bubblesSvg.value = r
-    })
+  Promise.all(
+    [
+      fetch('laws.json')
+        .then(r => r.json())
+        .then(r => {
+          laws.value = r
+        }),
+      fetch('img/bubbles.svg')
+        .then(r => r.text())
+        .then(r => {
+          bubblesSvg.value = r
+        })
+    ]
+  ).catch(() => {
+    emit('loadError')
+  })
 })
 </script>
 

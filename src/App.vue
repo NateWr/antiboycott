@@ -52,6 +52,16 @@ const setTotalProgress = () => {
   totalProgress.value= Math.round((scrollTop / viewportHeight) * 100)
 }
 
+/**
+ * Handle an error when fetching required data or
+ * resources
+ */
+const handleLoadError = () => {
+  if (confirm('We encountered an unexpected error. Would you like to reload the page and try again?')) {
+    window.location.reload()
+  }
+}
+
 onMounted(() => {
   /**
    * Load the step-by-step scroll observer
@@ -120,6 +130,7 @@ onMounted(() => {
       :step="step"
       :steps-completed="stepsCompleted"
       :steps-started="stepsStarted"
+      @load-error="handleLoadError"
     />
     <ModelBills
       :progress="progress"
