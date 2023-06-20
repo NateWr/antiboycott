@@ -229,7 +229,7 @@ const offset = computed(() => {
   margin-top: 2rem;
   padding: 0.75rem;
   background: lightgoldenrodyellow;
-  background: url('img/paper-background-400w.webp');
+  background: url('../img/paper-background-400w.webp');
   background-position: bottom center;
   background-size: cover;
   color: var(--color-black);
@@ -239,18 +239,18 @@ const offset = computed(() => {
   @media (orientation: portrait) {
 
     @media (min-width: 445px) {
-      background-image: url('img/paper-background-600w.webp');
+      background-image: url('../img/paper-background-600w.webp');
     }
 
     @media (--tablets-sm) {
-      background-image: url('img/paper-background-800w.webp');
+      background-image: url('../img/paper-background-800w.webp');
     }
 
     @media (min-resolution: 2dppx) {
-      background-image: url('img/paper-background-800w.webp');
+      background-image: url('../img/paper-background-800w.webp');
 
       @media (min-width: 445px) {
-        background-image: url('img/paper-background-1200w.webp');
+        background-image: url('../img/paper-background-1200w.webp');
       }
     }
   }
@@ -258,18 +258,18 @@ const offset = computed(() => {
   @media (orientation: landscape) {
 
     @media (--tablets-sm) {
-      background-image: url('img/paper-background-600w.webp');
+      background-image: url('../img/paper-background-600w.webp');
     }
 
     @media (min-width: 1134px) {
-      background-image: url('img/paper-background-800w.webp');
+      background-image: url('../img/paper-background-800w.webp');
     }
 
     @media (min-resolution: 2dppx) {
-      background-image: url('img/paper-background-800w.webp');
+      background-image: url('../img/paper-background-800w.webp');
 
       @media (--tablets-sm) {
-        background-image: url('img/paper-background-1200w.webp');
+        background-image: url('../img/paper-background-1200w.webp');
       }
     }
   }

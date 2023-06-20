@@ -128,7 +128,7 @@ onMounted(() => {
 
 .wrapper {
   background-color: var(--color-dark-blue);
-  background-image: url('img/background.jpg');
+  background-image: url('../img/background.jpg');
   background-repeat: repeat-both;
 }
 
