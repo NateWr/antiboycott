@@ -46,23 +46,27 @@ const keyFired = (key : number) => {
   return !!props.fired.find(t => t.id === key);
 }
 
-const getLawIndex = (status : string) => {
-  return laws.value.findIndex(l => l.status === status)
+const setLabel = (laws: Law[], status: string, label: string) : Law[] => {
+  const i = laws.findIndex(l => l.status === status)
+  if (i > -1) {
+    laws[i].label = label
+  }
+  return laws
 }
 
 const currentLaws = computed(() => {
   if (keyFired(KEY_2014_YEAREND)) {
-    let currentLaws = laws.value.slice();
-    currentLaws[getLawIndex(DEAD)].label = '';
+    let currentLaws = laws.value.slice()
+    setLabel(currentLaws, DEAD, '')
     return currentLaws;
   } else if (keyFired(KEY_2014_INTRO_BUBBLES)) {
-    let currentLaws = laws.value.slice(0, 8);
+    let currentLaws = laws.value.slice(0, 8)
     if (keyFired(KEY_2014_DEAD_HIGHLIGHT)) {
-      currentLaws[getLawIndex(DEAD)].label = 'Dead';
+      setLabel(currentLaws, DEAD, 'Dead')
     } else if (keyFired(KEY_2014_DEAD)) {
-      currentLaws[getLawIndex(INEFFECT)].label = '';
+      setLabel(currentLaws, INEFFECT, '')
     } else if (keyFired(KEY_2014_INEFFECT_HIGHLIGHT)) {
-      currentLaws[getLawIndex(INEFFECT)].label = 'In Effect';
+      setLabel(currentLaws, INEFFECT, 'In Effect')
     }
     return currentLaws
   }
