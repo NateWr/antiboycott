@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
 import { onMounted, ref, watch, type ComponentPublicInstance } from 'vue'
-import debounce from 'debounce'
 import {
-KEY_2016_COLLAPSE,
   KEY_2017_START,
   KEY_2021_START,
   KEY_2022_START,
@@ -39,9 +37,6 @@ const props = defineProps({
 })
 
 const stepName: string = 'timeline'
-const outerFrame = ref(null)
-const innerFrame = ref(null)
-const collapsed = ref<boolean>(false)
 const laws = ref<Law[]>([])
 const bubblesSvg = ref<string>('')
 const timelineOffset = ref<number>(0)
@@ -57,10 +52,10 @@ const year2022 = ref<InstanceType<typeof Timeline2022> | null>(null)
 const year2023 = ref<InstanceType<typeof Timeline2023> | null>(null)
 
 const timelineProgress = computed(() => {
-  if (props.stepsCompleted.includes(stepName)) {
-    return 1
-  } else if (props.step === stepName) {
+  if (props.step === stepName && props.progress) {
     return props.progress
+  } else if (props.stepsCompleted.includes(stepName)) {
+    return 1
   }
   return 0
 })
@@ -73,54 +68,32 @@ const keyframe = computed(() => {
     : 0
 })
 
-watch(() => timelineProgress.value, async(newVal, oldVal) => {
-  // Don't fiddle with the keyframes when the timeline
-  // has been collapsed
-  if (collapsed.value) {
-    return;
-  }
-  // Add trigger(s) while scrolling down
-  if (newVal > oldVal) {
-    for (let trigger of pending.value) {
-      if (trigger.progress <= newVal) {
-        fired.value.push(trigger)
-        pending.value.shift()
-      } else {
-        break;
+watch(
+  () => timelineProgress.value,
+  async(newVal, oldVal) => {
+    // Add trigger(s) while scrolling down
+    if (newVal > oldVal) {
+      for (let trigger of pending.value.slice()) {
+        if (trigger.progress <= newVal) {
+          fired.value.push(trigger)
+          pending.value.shift()
+        } else {
+          break;
+        }
+      }
+    // Remove trigger(s) while scrolling up
+    } else if (newVal < oldVal) {
+      for (let trigger of fired.value.slice().reverse()) {
+        if (trigger.progress > newVal && !pending.value.includes(trigger)) {
+          pending.value.unshift(trigger)
+          fired.value.pop()
+        } else {
+          break;
+        }
       }
     }
-  // Remove trigger(s) while scrolling up
-  } else if (newVal < oldVal) {
-    for (let trigger of fired.value.slice().reverse()) {
-      if (trigger.progress > newVal && !pending.value.includes(trigger)) {
-        pending.value.unshift(trigger)
-        fired.value.pop()
-      } else {
-        break;
-      }
-    }
   }
-  /**
-   * Collapse the timeline after the user has stopped scrolling
-   *
-   * Scrolling has to stop on iOS before setting the scrollTop or
-   * the value will be ignored. A "momentum" scroll (swipe) will
-   * reset the scrollTop according to the values when the gesture
-   * began.
-   */
-  if (newVal === 1) {
-    const collapseTimeline = debounce(() => {
-      collapsed.value = true
-      let $scrollEl = document.scrollingElement
-      if (!$scrollEl) {
-        $scrollEl = document.documentElement
-      }
-      $scrollEl.scrollTop = $scrollEl.scrollTop - (outerFrame.value.scrollHeight - innerFrame.value.scrollHeight);
-      removeEventListener('scroll', collapseTimeline)
-    }, 100)
-    addEventListener('scroll', collapseTimeline)
-  }
-})
+)
 
 const setTimelineOffset = (years : Array<ComponentPublicInstance>, delay : number = 300) => {
   delay = delay || 300
@@ -199,11 +172,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="timeline" :class="collapsed ? 'timeline-collapsed' : ''" :data-step="stepName" ref="outerFrame">
+  <div class="timeline" :data-step="stepName" ref="outerFrame">
     <h2 class="sr-only">Timeline</h2>
     <div
       class="timeline-frame"
-      ref="innerFrame"
       :style="`top: ${timelineOffset}px`"
     >
       <Timeline2014 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2014" />
@@ -240,15 +212,6 @@ onMounted(() => {
   padding-top: 2rem;
   padding-bottom: 20rem;
   transition: top 0.5s;
-}
-
-.timeline-collapsed {
-  height: auto;
-
-  .timeline-frame {
-    position: relative;
-    top: auto !important;
-  }
 }
 
 .timeline-year {
