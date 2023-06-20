@@ -83,6 +83,19 @@ const processPaper = () => {
   })
 }
 
+/**
+ * Run file compression on the OpenGraph image
+ */
+const processOGImage = () => {
+  const slug = 'og-image';
+  const source = `./src/assets/img/${slug}.png`
+  sharp(source)
+    .png()
+    .toFile(`${outputDir}/${slug}.png`)
+
+}
+
 processHeroImage()
 processBackground()
 processPaper()
+processOGImage()
