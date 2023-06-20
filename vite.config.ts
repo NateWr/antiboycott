@@ -10,7 +10,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/antiboycott/',
+  base: 'https://natewr.github.io/antiboycott/',
   plugins: [
     vue(),
     imagetools(),
