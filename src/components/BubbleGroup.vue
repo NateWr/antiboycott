@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import {
-  DEAD ,
-  INEFFECT,
-  PENDING,
-  DEFEATED
-} from '../helpers/billStatus'
+import {DEAD,INEFFECT,PENDING,DEFEATED} from '../helpers/billStatus'
 import type { Law } from '@/helpers/types'
 
 const props = defineProps({
@@ -72,14 +67,18 @@ const bubbles = computed(() => {
 
 let i = 0;
 
-function onBeforeEnter(el : HTMLElement) {
-  i++
-  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * props.delay)}s`
+const onBeforeEnter = (el: Element) : void => {
+  if (el instanceof HTMLElement) {
+    i++
+    el.style.transitionDelay = `0.6s, 0.6s, ${(i * props.delay)}s`
+  }
 }
 
-function onBeforeLeave(el : HTMLElement) {
-  i--
-  el.style['transition-delay'] = `0.6s, 0.6s, ${(i * (props.delay/2))}s`
+const onBeforeLeave = (el: Element) : void => {
+  if (el instanceof HTMLElement) {
+    i--
+    el.style.transitionDelay = `0.6s, 0.6s, ${(i * (props.delay/2))}s`
+  }
 }
 </script>
 

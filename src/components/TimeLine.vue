@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import { onMounted, ref, watch, type ComponentPublicInstance } from 'vue'
+import { onMounted, ref, watch, type Ref } from 'vue'
 import {
   KEY_2017_START,
   KEY_2021_START,
@@ -97,7 +97,7 @@ watch(
   }
 )
 
-const setTimelineOffset = (years : Array<ComponentPublicInstance>, delay : number = 300) => {
+const setTimelineOffset = (years : Ref[], delay : number = 300) => {
   delay = delay || 300
   setTimeout(() => {
     const height = years.reduce<number>((height, year) => {

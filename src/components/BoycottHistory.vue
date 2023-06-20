@@ -23,11 +23,11 @@ const props = defineProps({
 })
 
 const RosaParksWebpSrc = RosaParksWebp
-  .map(({src, w}) => `${src} ${w}w`)
+  .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
   .join(',')
 
 const RosaParksPngSrc = RosaParksPng
-  .map(({src, w}) => `${src} ${w}w`)
+  .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
   .join(',')
 
 const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (orientation: landscape) 125px, (min-width: 720px) 250px, 165px';

@@ -28,12 +28,13 @@ const init = () => {
   const $steps = document.querySelectorAll('[data-step]');
   let reachedStep = false
   for (const [i, $step] of $steps.entries()) {
-    if (reachedStep) {
+    if (reachedStep || !($step instanceof HTMLElement)) {
       break;
     }
-    stepsStarted.value.push($step.dataset.step)
-    if ($step.dataset.step !== step.value) {
-      stepsCompleted.value.push($step.dataset.step)
+    const stepName = $step.dataset.step || ''
+    stepsStarted.value.push(stepName)
+    if (stepName !== step.value) {
+      stepsCompleted.value.push(stepName)
     } else {
       reachedStep = true
     }
