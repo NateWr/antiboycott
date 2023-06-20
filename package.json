@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "array-move": "^4.0.0",
+    "debounce": "^1.2.1",
     "intersection-observer": "^0.12.2",
     "scrollama": "^3.2.0",
     "vue": "^3.3.2"

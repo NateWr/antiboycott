@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import scrollama from 'scrollama';
+import debounce from 'debounce'
 import { onMounted, ref } from 'vue';
 import BoycottHistory from './components/BoycottHistory.vue'
 import TimeLine from './components/TimeLine.vue';
 import ModelBills from './components/ModelBills.vue';
 import TemplateRepression from './components/TemplateRepression.vue';
 import CreditsBlock from './components/CreditsBlock.vue';
+import ProgressBar from './components/ProgressBar.vue';
 
 const stepsStarted = ref<string[]>([])
 const stepsCompleted = ref<string[]>([])
 const step = ref<string>('')
 const progress = ref<number>(0)
+const totalProgress = ref<number>(0)
 let initialized : boolean = false
 
 /**
@@ -39,9 +42,19 @@ const init = () => {
   initialized = true
 }
 
+/**
+ * Calculate the total progress of the reader based
+ * on scroll position in the document
+ */
+const setTotalProgress = () => {
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+  const viewportHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+  totalProgress.value= Math.round((scrollTop / viewportHeight) * 100)
+}
+
 onMounted(() => {
   /**
-   * Load the scroll observer
+   * Load the step-by-step scroll observer
    */
   scrollama()
     .setup({
@@ -77,6 +90,11 @@ onMounted(() => {
     })
 
   /**
+   * Update the totalProgress whenever the user scrolls
+   */
+  window.onscroll = debounce(setTotalProgress, 200)
+
+  /**
    * Show the scroll button when the app is loaded
    */
   setTimeout(() => {
@@ -90,6 +108,7 @@ onMounted(() => {
 
 <template>
   <div class="wrapper">
+    <ProgressBar :progress="totalProgress" />
     <BoycottHistory
       :progress="progress"
       :step="step"
