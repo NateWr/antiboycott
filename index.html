@@ -60,6 +60,10 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     .hero {
       position: relative;
       width: 100vw;
@@ -110,6 +114,52 @@
       background-image: url('img/boycott-israel-march-portrait-450w.jpg');
     }
 
+    .loading-app {
+      display: block;
+      text-align: center;
+      max-width: 20em;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10rem 1rem;
+    }
+
+    .loading-app-spinner {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      animation: spinner 1s linear infinite;
+      border-radius: 100%;
+      border-top: 2px solid #FD9647;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid #FD9647;
+      border-right: 2px solid transparent;
+    }
+
+    .loading-app p {
+      max-width: 20em;
+    }
+
+    .loading-app a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-thickness: 0.1em;
+    }
+
+    .loading-app-failed-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    @keyframes spinner {
+      0% {
+        transform: rotateZ(-360deg);
+      }
+      100% {
+        transform: rotateZ(0deg);
+      }
+    }
+
     @media (min-width: 451px) {
       .hero {
         background-image: url('img/boycott-israel-march-portrait-827w.jpg');
@@ -128,6 +178,16 @@
       .hero-lead {
         font-size: 5vw;
       }
+
+      .loading-app {
+        font-size: 2rem;
+        gap: 2rem;
+      }
+
+      .loading-app-failed-icon {
+        width: 4rem;
+        height: auto;
+      }
     }
 
     @media (orientation: landscape) {
@@ -137,7 +197,7 @@
       }
 
       .hero-title {
-        margin-top: 0;
+        margin-right: 0;
         font-size: 4vw;
         line-height: 1;
         max-width: 45vw;
@@ -214,11 +274,33 @@
       </span>
     </div>
     <div id="app">
-      <div class="loading-app">
-        We're still loading the story. If it fails to load, please <a href="/">refresh</a> and try again.
+      <div id="load-pending" class="loading-app">
+        <span class="loading-app-spinner" aria-hidden="true"></span>
+        <p>
+          We're still loading the story. If it fails to load, please <a href="/">refresh</a> and try again.
+        </p>
+      </div>
+      <div id="load-failed" class="loading-app" hidden>
+        <svg class="loading-app-failed-icon" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path fill="#FF3D3D" d="M479.982-280q14.018 0 23.518-9.482 9.5-9.483 9.5-23.5 0-14.018-9.482-23.518-9.483-9.5-23.5-9.5-14.018 0-23.518 9.482-9.5 9.483-9.5 23.5 0 14.018 9.482 23.518 9.483 9.5 23.5 9.5ZM453-433h60v-253h-60v253Zm27.266 353q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80-397.681 80-480.5q0-82.819 31.5-155.659Q143-709 197.5-763t127.341-85.5Q397.681-880 480.5-880q82.819 0 155.659 31.5Q709-817 763-763t85.5 127Q880-563 880-480.266q0 82.734-31.5 155.5T763-197.684q-54 54.316-127 86Q563-80 480.266-80Zm.234-60Q622-140 721-239.5t99-241Q820-622 721.188-721 622.375-820 480-820q-141 0-240.5 98.812Q140-622.375 140-480q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>
+        <p>
+          Sorry, we're unable to show you this story because the browser you are using is not compatible. Try reading this on another device or <a href="https://visualizingpalestine.org/visuals/anti-boycott-laws">view the infographic</a>.
+        </p>
       </div>
     </div>
   </article>
+  <script type="text/javascript">
+    if (!('IntersectionObserver' in window) ||
+      !('IntersectionObserverEntry' in window) ||
+      !('intersectionRatio' in window.IntersectionObserverEntry.prototype) ||
+      ('ResizeObserver' in window === false)) {
+        const $loading = document.getElementById('load-pending')
+        const $failed = document.getElementById('load-failed')
+        if ($loading && $failed) {
+          $failed.removeAttribute('hidden')
+          $loading.setAttribute('hidden', 'hidden')
+        }
+    }
+  </script>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
