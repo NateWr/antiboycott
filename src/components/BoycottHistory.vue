@@ -216,7 +216,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       ]"
     >
       <p>
-        That year, Democrat and Republican lawmakers begin introducing anti-boycott bills to suppress boycotts that support
+        That year, Democratic and Republican lawmakers begin introducing anti-boycott bills to suppress boycotts that support
         <span class="txt-highlight txt-highlight-blue">Palestinian rights</span>
       </p>
     </div>
