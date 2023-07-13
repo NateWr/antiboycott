@@ -2,6 +2,8 @@
 import SpacerLine from './SpacerLine.vue'
 import RosaParksWebp from '../assets/img/rosa-parks.png?w=165;330;250;500&format=webp&as=source&imagetools'
 import RosaParksPng from '../assets/img/rosa-parks.png?w=165;330;250;500&format=png&as=source&imagetools'
+import SupremeCourtWebp from '../assets/img/supreme-court.png?w=165;330;250;500&format=webp&as=source&imagetools'
+import SupremeCourtPng from '../assets/img/supreme-court.png?w=165;330;250;500&format=png&as=source&imagetools'
 import ContaminatedApartheidWebp from '../assets/img/contaminated-apartheid.png?w=165;330;250;500&format=webp&as=source&imagetools'
 import ContaminatedApartheidPng from '../assets/img/contaminated-apartheid.png?w=165;330;250;500&format=png&as=source&imagetools'
 import BdsSignWebp from '../assets/img/bds-sign.png?w=165;330;250;500&format=webp&as=source&imagetools'
@@ -30,6 +32,8 @@ const getSrc = ({src, w}: {src: string, w: number}) => `${src} ${w}w`
 
 const RosaParksWebpSrc = RosaParksWebp.map(getSrc).join(',')
 const RosaParksPngSrc = RosaParksPng.map(getSrc).join(',')
+const SupremeCourtWebpSrc = SupremeCourtWebp.map(getSrc).join(',')
+const SupremeCourtPngSrc = SupremeCourtPng.map(getSrc).join(',')
 const ContaminatedApartheidWebpSrc = ContaminatedApartheidWebp.map(getSrc).join(',')
 const ContaminatedApartheidPngSrc = ContaminatedApartheidPng.map(getSrc).join(',')
 const BdsSignWebpSrc = BdsSignWebp.map(getSrc).join(',')
@@ -121,6 +125,58 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       <picture class="history-image">
         <source
           type="image/webp"
+          :srcset="SupremeCourtWebpSrc"
+          :sizes="imageSrcSizes"
+        />
+        <source
+          type="image/png"
+          :srcset="SupremeCourtPngSrc"
+          :sizes="imageSrcSizes"
+        />
+        <img
+          :src="SupremeCourtPng[0].src"
+          alt="Photo of Rosa Parks"
+          loading="lazy"
+          decoding="async"
+          width="165"
+          height="165"
+        />
+      </picture>
+      <div class="history-details">
+        <h3>
+          <span class="history-year">1982</span>
+          <span class="history-name">
+            <span class="history-name-bg" aria-hidden="true" />
+            <span class="history-name-text">NAACP v. Claiborne</span>
+          </span>
+          <br />
+          <span class="history-name">
+            <span class="history-name-bg" aria-hidden="true" />
+            <span class="history-name-text">Hardware</span>
+          </span>
+        </h3>
+        <p class="history-desc">
+          The Supreme Court unequivocally rules that politically motivated boycotts are protected under the First Amendment, in a case brought by the NAACP to protect the right to protest police brutality by boycotting white merchants.
+        </p>
+      </div>
+    </div>
+    <SpacerLine
+      name="history-spacer-3"
+      :step="step"
+      :steps-completed="stepsCompleted"
+      :progress="progress"
+    />
+    <div
+      data-step="history-anti-apartheid"
+      class="fade history-item"
+      :class="[
+        'fade',
+        stepsStarted.includes('history-anti-apartheid') ? 'fade-in' : 'fade-out'
+      ]"
+    >
+      <picture class="history-image">
+        <source
+          type="image/webp"
           :srcset="ContaminatedApartheidWebpSrc"
           :sizes="imageSrcSizes"
         />
@@ -155,7 +211,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       </div>
     </div>
     <SpacerLine
-      name="history-spacer-3"
+      name="history-spacer-4"
       :step="step"
       :steps-completed="stepsCompleted"
       :progress="progress"
@@ -205,7 +261,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       </div>
     </div>
     <SpacerLine
-      name="history-spacer-4"
+      name="history-spacer-5"
       :step="step"
       :steps-completed="stepsCompleted"
       :progress="progress"
