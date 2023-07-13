@@ -288,6 +288,9 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
         </div>
         <p class="credits-photos">
           Photos by
+          <a href="https://en.wikipedia.org/wiki/File:Panorama_of_United_States_Supreme_Court_Building_at_Dusk.jpg">
+            Joe Ravi,
+          </a>
           <a href="https://www.flickr.com/photos/alisdare/52031860086/">Alisdare Hickson</a>
           and
           <a href="https://commons.wikimedia.org/wiki/File:Boycott_-_Contaminated_with_apartheid_-_South_African_goods.jpg">Djembayz</a>.
