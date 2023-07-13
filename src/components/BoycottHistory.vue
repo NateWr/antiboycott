@@ -101,7 +101,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
             <span class="history-name-text">Boycott</span>
           </span>
         </h3>
-        <p class="history-desc">After Rosa Parks was arrested for refusing to surrender her seat to a white person, a year-long boycott of the public transit system compelled the Supreme Court to declare the racist segregation of buses in Alabama unconstitutional.</p>
+        <p class="history-desc">After Rosa Parks is arrested for refusing to surrender her seat to a white person, a year-long boycott of the public transit system compels the Supreme Court to declare the racist segregation of buses in Alabama unconstitutional.</p>
       </div>
     </div>
     <SpacerLine
@@ -151,7 +151,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
             <span class="history-name-text">Movement</span>
           </span>
         </h3>
-        <p class="history-desc">Americans launched economic, social and cultural boycotts of South Africa that led Congress to pass the Comprehensive Anti-Apartheid Act, overruling President Reagan’s veto to do so.</p>
+        <p class="history-desc">Americans launch economic, social and cultural boycotts of South Africa that lead Congress to pass the Comprehensive Anti-Apartheid Act, overruling President Reagan’s veto to do so.</p>
       </div>
     </div>
     <SpacerLine
