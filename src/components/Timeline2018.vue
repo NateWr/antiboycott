@@ -67,7 +67,7 @@ const yearProgress = computed(() => {
     <div class="timeline-text-group">
       <TimelineText :keyframe="keyframe" :start="KEY_2018_START" :end="KEY_2018_COLLAPSE">
         <span class="fade" :class="keyframe >= KEY_2018_INTRO ? 'fade-in' : 'fade-out'">
-          Democratic and Republican legislators continue to introduce anti-boycott bills.
+          Democratic and Republican legislators continue to introduce anti-boycott bills to shield Israel from accountability.
         </span>
       </TimelineText>
     </div>

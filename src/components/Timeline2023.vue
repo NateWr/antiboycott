@@ -55,7 +55,7 @@ const currentLaws = computed(() => {
           <span class="txt-highlight txt-highlight-orange">Economic</span>
           <span class="txt-highlight txt-highlight-orange">Boycotts</span>
           <span class="txt-highlight txt-highlight-orange">Act,</span>
-          a model bill drafted by a corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
+          a model bill drafted by the American Legislative Affairs Council (ALEC), a right-wing corporate lobbying group, to <strong>expand the legislative assault</strong> on trans rights, abortion access, and labor rights.
         </span>
       </TimelineText>
     </div>

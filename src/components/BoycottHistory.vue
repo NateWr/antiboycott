@@ -257,7 +257,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
             <span class="history-name-text">Sanctions</span>
           </span>
         </h3>
-        <p class="history-desc">A growing number of Americans support Boycott, Divestment, and Sanctions (BDS) campaigns that target Israel’s regime of settler colonialism, military occupation, and apartheid over the Palestinian people.</p>
+        <p class="history-desc">A growing number of Americans back the 2005 Palestinian civil society call for Boycott, Divestment, and Sanctions (BDS) campaigns that target Israel’s regime of settler colonialism, military occupation, and apartheid over the Palestinian people.</p>
       </div>
     </div>
     <SpacerLine

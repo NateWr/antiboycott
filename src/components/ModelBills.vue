@@ -34,27 +34,10 @@ defineProps({
           stepsStarted.includes('model-bill-eba') ? 'fade-in' : 'fade-out'
         ]"
       >
-        The <strong>Eliminate Economic Boycotts Act</strong> is a
+        How Does a
         <span class="txt-highlight txt-highlight-blue">Model</span>
         <span class="txt-highlight txt-highlight-blue">Bill</span>
-        that was created by a corporate lobby group.
-      </div>
-      <SpacerLine
-        name="model-bill-spacer-1"
-        :step="step"
-        :steps-completed="stepsCompleted"
-        :progress="progress"
-      />
-      <div
-        data-step="model-bill-how-works"
-        :class="[
-          'model-bill-text',
-          'text-center',
-          'fade',
-          stepsStarted.includes('model-bill-how-works') ? 'fade-in' : 'fade-out'
-        ]"
-      >
-        How does a Model Bill work?
+        Work?
       </div>
       <SpacerLine
         name="model-bill-spacer-2"
@@ -71,7 +54,7 @@ defineProps({
           stepsStarted.includes('model-bill-copy') ? 'fade-in' : 'fade-out'
         ]"
       >
-          Lawmakers <strong>copy the language</strong> in a model bill to quickly introduce similar legislation targeting other movements.
+        Model bills are drafted by special interest groups, who lobby lawmakers across the country to <strong>copy the language</strong> in order to quickly introduce the same policy across multiple legislatures.
       </div>
       <SpacerLine
         name="model-bill-spacer-3"
@@ -88,7 +71,7 @@ defineProps({
           stepsStarted.includes('model-bill-template') ? 'fade-in' : 'fade-out'
         ]"
       >
-          Model bills are a template for all kinds of laws that strip Americans of their  rights.
+        Model bills pushed by ALEC and other right-wing groups have stripped Americans of their rights.
       </div>
     </div>
   </div>

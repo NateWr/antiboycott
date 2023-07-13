@@ -70,10 +70,10 @@ const yearProgress = computed(() => {
     <div class="timeline-text-group">
       <TimelineText :keyframe="keyframe" :start="KEY_2015_START" :end="KEY_2015_COLLAPSE">
         <span class="fade" :class="keyframe >= KEY_2015_COPYCAT ? 'fade-in' : 'fade-out'">
-          Copycat bills are introduced in several states.
+          Similar measures are introduced in several states.
         </span>
         <span class="fade" :class="keyframe >= KEY_2015_FEDERAL ? 'fade-in' : 'fade-out'">
-          Similar legislation is proposed and passed at the federal level.
+          A bill to restrict the right to boycott is also introduced at the federal level, but fails.
         </span>
       </TimelineText>
     </div>

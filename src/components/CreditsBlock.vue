@@ -134,7 +134,7 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
       </div>
       <h3 class="credits-item-title credits-unroll">
         <span class="credits-unroll-bg" aria-hidden="true" />
-        <span class="credits-unroll-text">Boycott</span>
+        <span class="credits-unroll-text">Watch Boycott</span>
       </h3>
       <p class="credits-desc credits-slide">
         A documentary that chronicles the personal histories and legal battles of three <strong>“accidental plaintiffs”</strong> challenging anti-boycott laws.
@@ -195,7 +195,7 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
       </picture>
       <h3 class="credits-item-title credits-unroll">
         <span class="credits-unroll-bg" aria-hidden="true" />
-        <span class="credits-unroll-text">Legal Tracker</span>
+        <span class="credits-unroll-text">Legal Trackers</span>
       </h3>
       <p class="credits-desc credits-slide">
         Track <strong>every bill</strong> that is pending, in effect or defeated in your state and at the federal level.
