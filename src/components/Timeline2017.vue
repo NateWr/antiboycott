@@ -16,7 +16,6 @@ import {
   KEY_2017_CASE_LOST,
   KEY_2017_SUPREME_COURT,
   KEY_2017_COLLAPSE_ALL,
-KEY_2017_PUBLISHER_HIGHLIGHT_END,
 } from '../helpers/timelineKeyframes'
 import type { Law, Trigger } from '../helpers/types';
 import { DEFEATED } from '../helpers/billStatus';
@@ -66,7 +65,7 @@ const laws = computed(() => {
 const currentLaws = computed(() => {
   if (keyFired(KEY_2017_LAWS_CONTINUE_BUBBLE)) {
     let currentLaws = laws.value.slice()
-    if (keyFired(KEY_2017_PUBLISHER_HIGHLIGHT) && !keyFired(KEY_2017_PUBLISHER_HIGHLIGHT_END)) {
+    if (keyFired(KEY_2017_PUBLISHER_HIGHLIGHT) && !keyFired(KEY_2017_COLLAPSE_ALL)) {
       let i = getArkansasLawIndex()
       if (i) {
         currentLaws[i] = {
@@ -107,7 +106,7 @@ const yearProgress = computed(() => {
 </script>
 
 <template>
-  <div class="timeline-year">
+  <div class="timeline-year timeline-year-2017">
     <TimelineArrow :progress="yearProgress" />
     <TimelineDate :keyframe="keyframe" :target="KEY_2017_START">
       2017
@@ -134,7 +133,7 @@ const yearProgress = computed(() => {
           The publisher of Arkansas Times, a newspaper in Little Rock, is asked to sign the anti-boycott pledge before the local university will advertise in the paper. Instead, he launches a <strong>suit against the state</strong>.
         </span>
       </TimelineText>
-      <TimelineText :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
+      <TimelineText class="timeline-text-paper-case" :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
         <span class="fade" :class="keyframe >= KEY_2017_CASE_LOST ? 'fade-in' : 'fade-out'">
           The paper loses the case, wins on appeal, and loses again in a later appeal.
         </span>
@@ -147,3 +146,25 @@ const yearProgress = computed(() => {
     </div>
   </div>
 </template>
+
+<style lang="postcss">
+@import '../assets/css/variables.css';
+
+.timeline-year-2017 {
+
+  .bubble-ineffect .bubble-label-line {
+    height: 2rem;
+  }
+}
+
+@media (orientation: portrait) {
+
+  .timeline-text-paper-case {
+    padding-top: 7rem;
+  }
+
+  .timeline-text-out.timeline-text-paper-case {
+    padding-top: 0;
+  }
+}
+</style>

@@ -29,7 +29,6 @@ export const KEY_2017_COLLAPSE_TOP : number = i++
 export const KEY_2017_TARGET_ANYONE : number = i++
 export const KEY_2017_PUBLISHER : number = i++
 export const KEY_2017_PUBLISHER_HIGHLIGHT : number = i++
-export const KEY_2017_PUBLISHER_HIGHLIGHT_END : number = i++
 export const KEY_2017_CASE_LOST : number = i++
 export const KEY_2017_SUPREME_COURT : number = i++
 export const KEY_2017_COLLAPSE_ALL : number = i++
@@ -81,7 +80,6 @@ export const KEYFRAMES : KeyFrame[] = [
   {id: KEY_2017_TARGET_ANYONE, duration: 5},
   {id: KEY_2017_PUBLISHER, duration: 5},
   {id: KEY_2017_PUBLISHER_HIGHLIGHT, duration: 5},
-  {id: KEY_2017_PUBLISHER_HIGHLIGHT_END, duration: 5},
   {id: KEY_2017_CASE_LOST, duration: 5},
   {id: KEY_2017_SUPREME_COURT, duration: 5},
   {id: KEY_2017_COLLAPSE_ALL, duration: 5},
