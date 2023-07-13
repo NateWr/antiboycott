@@ -166,11 +166,10 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
       :steps-completed="stepsCompleted"
       :progress="progress"
     />
-    <a
+    <div
       data-step="credits-tracker"
       class="credits-item"
       :class="stepsStarted.includes('credits-tracker') ? 'credits-item-in' : 'credits-item-out'"
-      href="https://legislation.palestinelegal.org"
     >
       <picture class="credits-image credits-slide">
         <source
@@ -197,11 +196,37 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
         <span class="credits-unroll-bg" aria-hidden="true" />
         <span class="credits-unroll-text">Legal Trackers</span>
       </h3>
-      <p class="credits-desc credits-slide">
-        Track <strong>every bill</strong> that is pending, in effect or defeated in your state and at the federal level.
+      <p class="credits-desc credits-slide credits-desc-trackers">
+        Track U.S. legislaton targetting advocacy for
+        <a href="https://legislation.palestinelegal.org/">Palestinian rights</a>
+        or track
+        <a href="https://justvision.org/boycott/legislation-tracker">all anti-boycott legislation</a>,
+        from advocacy for Palestinian rights to environmental sustainability and gun safety.
       </p>
-      <PalestineLegalLogo class="credits-logo credits-logo-palestine-legal credits-slide" />
-    </a>
+      <div class="credits-logos">
+        <PalestineLegalLogo class="credits-logo credits-logo-palestine-legal credits-slide" />
+        <picture class="credits-logo credits-logo-just-vision credits-slide">
+          <source
+            type="image/webp"
+            :srcset="JustVisionWebpSrc"
+            :sizes="JustVisionImageSrcSizes"
+          />
+          <source
+            type="image/png"
+            :srcset="JustVisionPngSrc"
+            :sizes="JustVisionImageSrcSizes"
+          />
+          <img
+            :src="JustVisionPngSrc[0].src"
+            alt="Logo for Just Vision"
+            loading="lazy"
+            decoding="async"
+            width="459"
+            height="84"
+          />
+        </picture>
+      </div>
+    </div>
     <SpacerLine
       name="credits-spacer-3"
       :step="step"
@@ -363,9 +388,28 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
   font-size: 1.25rem;
 }
 
+.credits-desc-trackers {
+
+  & a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.15em;
+  }
+}
+
 .credits-logo-just-vision img {
   width: 100px;
   height: auto;
+}
+
+.credits-logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  & .credits-logo-just-vision {
+    margin-top: 0.5rem;
+  }
 }
 
 .credits-image-tracker {
