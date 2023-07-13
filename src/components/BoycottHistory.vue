@@ -2,6 +2,10 @@
 import SpacerLine from './SpacerLine.vue'
 import RosaParksWebp from '../assets/img/rosa-parks.png?w=165;330;250;500&format=webp&as=source&imagetools'
 import RosaParksPng from '../assets/img/rosa-parks.png?w=165;330;250;500&format=png&as=source&imagetools'
+import ContaminatedApartheidWebp from '../assets/img/contaminated-apartheid.png?w=165;330;250;500&format=webp&as=source&imagetools'
+import ContaminatedApartheidPng from '../assets/img/contaminated-apartheid.png?w=165;330;250;500&format=png&as=source&imagetools'
+import BdsSignWebp from '../assets/img/bds-sign.png?w=165;330;250;500&format=webp&as=source&imagetools'
+import BdsSignPng from '../assets/img/bds-sign.png?w=165;330;250;500&format=png&as=source&imagetools'
 
 const props = defineProps({
   progress: {
@@ -22,13 +26,14 @@ const props = defineProps({
   }
 })
 
-const RosaParksWebpSrc = RosaParksWebp
-  .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
-  .join(',')
+const getSrc = ({src, w}: {src: string, w: number}) => `${src} ${w}w`
 
-const RosaParksPngSrc = RosaParksPng
-  .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
-  .join(',')
+const RosaParksWebpSrc = RosaParksWebp.map(getSrc).join(',')
+const RosaParksPngSrc = RosaParksPng.map(getSrc).join(',')
+const ContaminatedApartheidWebpSrc = ContaminatedApartheidWebp.map(getSrc).join(',')
+const ContaminatedApartheidPngSrc = ContaminatedApartheidPng.map(getSrc).join(',')
+const BdsSignWebpSrc = BdsSignWebp.map(getSrc).join(',')
+const BdsSignPngSrc = BdsSignPng.map(getSrc).join(',')
 
 const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (orientation: landscape) 125px, (min-width: 720px) 250px, 165px';
 </script>
@@ -116,16 +121,16 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       <picture class="history-image">
         <source
           type="image/webp"
-          :srcset="RosaParksWebpSrc"
+          :srcset="ContaminatedApartheidWebpSrc"
           :sizes="imageSrcSizes"
         />
         <source
           type="image/png"
-          :srcset="RosaParksPngSrc"
+          :srcset="ContaminatedApartheidPngSrc"
           :sizes="imageSrcSizes"
         />
         <img
-          :src="RosaParksPng[0].src"
+          :src="ContaminatedApartheidPng[0].src"
           alt="Photo of Rosa Parks"
           loading="lazy"
           decoding="async"
@@ -166,16 +171,16 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       <picture class="history-image">
         <source
           type="image/webp"
-          :srcset="RosaParksWebpSrc"
+          :srcset="BdsSignWebpSrc"
           :sizes="imageSrcSizes"
         />
         <source
           type="image/png"
-          :srcset="RosaParksPngSrc"
+          :srcset="BdsSignPngSrc"
           :sizes="imageSrcSizes"
         />
         <img
-          :src="RosaParksPng[0].src"
+          :src="BdsSignPng[0].src"
           alt="Photo of Rosa Parks"
           loading="lazy"
           decoding="async"

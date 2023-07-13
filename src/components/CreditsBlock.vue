@@ -286,6 +286,12 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
         <div class="credits-date">
           April 2023
         </div>
+        <p class="credits-photos">
+          Photos by
+          <a href="https://www.flickr.com/photos/alisdare/52031860086/">Alisdare Hickson</a>
+          and
+          <a href="https://commons.wikimedia.org/wiki/File:Boycott_-_Contaminated_with_apartheid_-_South_African_goods.jpg">Djembayz</a>.
+        </p>
       </div>
     </div>
   </div>
@@ -442,6 +448,10 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
   letter-spacing: 0.1em;
   color: var(--color-white);
   text-transform: uppercase;
+}
+
+.credits-photos {
+  font-size: 0.75rem;
 }
 
 .credits-slide {
