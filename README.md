@@ -1,6 +1,8 @@
-# antiboycott
+# The Rise of U.S. Anti-Boycott Legislation
 
-...
+This is a web-based story created for [Visualizing Palestine](http://visualizingpalestine.org) based on their infographic [The Rise of U.S. Anti-Boycott Legislation](https://visualizingpalestine.org/visuals/anti-boycott-laws). It was created with [Vue](http://visualizingpalestine.org/), [Vite](https://vitejs.dev), and [scrollama](https://github.com/russellsamora/scrollama).
+
+![Screenshot that shows a protest banner reading "Boycott Israel Apartheid". The story title is superimposed on top.](./src/assets/img/og-image.png)
 
 ## Project Setup
 
