@@ -18,6 +18,7 @@ import Timeline2020 from './Timeline2020.vue'
 import Timeline2021 from './Timeline2021.vue'
 import Timeline2022 from './Timeline2022.vue'
 import Timeline2023 from './Timeline2023.vue'
+import TimelineLegend from './TimelineLegend.vue'
 import { KEY_2018_START } from '../helpers/timelineKeyframes'
 import { KEY_2023_START } from '../helpers/timelineKeyframes'
 
@@ -197,6 +198,7 @@ onMounted(() => {
       <Timeline2022 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2022" />
       <Timeline2023 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2023" />
     </div>
+    <TimelineLegend :keyframe="keyframe" />
     <span v-if="bubblesSvg" v-html="bubblesSvg" hidden aria-hidden="true"/>
   </div>
 </template>
