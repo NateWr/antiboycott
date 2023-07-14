@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import scrollama from 'scrollama';
-import debounce from 'debounce'
+import { throttle } from 'throttle-debounce'
 import { onMounted, ref } from 'vue';
 import BoycottHistory from './components/BoycottHistory.vue'
 import TimeLine from './components/TimeLine.vue';
@@ -103,7 +103,7 @@ onMounted(() => {
   /**
    * Update the totalProgress whenever the user scrolls
    */
-  window.onscroll = debounce(setTotalProgress, 200)
+  window.onscroll = throttle(300, setTotalProgress)
 
   /**
    * Show the scroll button when the app is loaded
