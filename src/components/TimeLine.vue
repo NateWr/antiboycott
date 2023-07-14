@@ -198,7 +198,7 @@ onMounted(() => {
       <Timeline2022 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2022" />
       <Timeline2023 class="timeline-year" :keyframe="keyframe" :fired="fired" :all-laws="laws" :progress="timelineProgress" ref="year2023" />
     </div>
-    <TimelineLegend :keyframe="keyframe" />
+    <TimelineLegend :keyframe="keyframe" :progress="timelineProgress" />
     <span v-if="bubblesSvg" v-html="bubblesSvg" hidden aria-hidden="true"/>
   </div>
 </template>

@@ -8,11 +8,15 @@ const props = defineProps({
     type: Number,
     required: true
   },
+  progress: {
+    type: Number,
+    required: true,
+  },
 })
 const open = ref<Boolean>(false)
 
 let visible = computed(() => {
-  return props.keyframe >= KEY_2014_COLLAPSE && props.keyframe <= KEY_2023_COLLAPSE;
+  return props.keyframe >= KEY_2014_COLLAPSE && props.progress < 1;
 })
 
 /**
