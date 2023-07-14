@@ -92,10 +92,27 @@ const processOGImage = () => {
   sharp(source)
     .png()
     .toFile(`${outputDir}/${slug}.png`)
+}
 
+/**
+ * Generate the site icon images
+ */
+const processSiteIcon = () => {
+  const slug = 'site-icon'
+  const source = `./src/assets/img/${slug}.jpg`
+  const widths = [32, 180, 192, 300]
+
+  widths.forEach(size => {
+    const filename = `${slug}-${size}w`
+    sharp(source)
+      .resize(size)
+      .png({quality: 70})
+      .toFile(`${outputDir}/${filename}.png`)
+  })
 }
 
 processHeroImage()
 processBackground()
 processPaper()
 processOGImage()
+processSiteIcon()

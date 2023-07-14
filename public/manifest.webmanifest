@@ -1,0 +1,6 @@
+{
+    "icons": [
+      { "src": "/img/site-icon-192w.jpg", "type": "image/jpeg", "sizes": "192x192" },
+      { "src": "/img/site-icon-300w.jpg", "type": "image/jpeg", "sizes": "300x300" }
+    ]
+  }
