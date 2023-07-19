@@ -115,11 +115,11 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       :progress="progress"
     />
     <div
-      data-step="history-anti-apartheid"
+      data-step="history-naacp"
       class="fade history-item"
       :class="[
         'fade',
-        stepsStarted.includes('history-anti-apartheid') ? 'fade-in' : 'fade-out'
+        stepsStarted.includes('history-naacp') ? 'fade-in' : 'fade-out'
       ]"
     >
       <picture class="history-image">
