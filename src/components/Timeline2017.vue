@@ -125,7 +125,7 @@ const yearProgress = computed(() => {
     <div class="timeline-text-group">
       <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
         <span class="fade" :class="keyframe >= KEY_2017_TARGET_ANYONE ? 'fade-in' : 'fade-out'">
-          The laws often target people who work with the state. Public school workers and software contractors are among those who have been compelled to sign contracts giving up their <strong>right to boycott</strong>.
+          The laws often target people who work with the state. Public school workers, filmmakers and students are among those who have been compelled to sign contracts giving up their <strong>right to boycott</strong>.
         </span>
       </TimelineText>
       <TimelineText :keyframe="keyframe" :start="KEY_2017_COLLAPSE_TOP" :end="KEY_2017_PUBLISHER_HIGHLIGHT">
@@ -140,7 +140,7 @@ const yearProgress = computed(() => {
       </TimelineText>
       <TimelineText :keyframe="keyframe" :start="KEY_2017_PUBLISHER_HIGHLIGHT" :end="KEY_2017_COLLAPSE_ALL">
         <span class="fade" :class="keyframe >= KEY_2017_SUPREME_COURT ? 'fade-in' : 'fade-out'">
-          By 2023, it has reached the U.S. Supreme Court, but the justices <strong>decline to review the case</strong>, leaving cases on anti-boycott laws to play out in lower courts, but keeping intact the precedent set by the Supreme Court in NAACP v. Claiborne Hardware Co. affirming the right to boycott.
+          By 2023, it has reached the U.S. Supreme Court, but the justices <strong>decline to review the case</strong>, leaving challenges to anti-boycott laws to play out in lower courts, but keeping intact the precedent set by the Supreme Court in NAACP v. Claiborne Hardware Co. affirming the right to boycott.
         </span>
       </TimelineText>
     </div>

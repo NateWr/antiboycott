@@ -67,7 +67,7 @@ const yearProgress = computed(() => {
     <div class="timeline-text-group">
       <TimelineText :keyframe="keyframe" :start="KEY_2021_START" :end="KEY_2021_COLLAPSE">
         <span class="fade" :class="keyframe >= KEY_2021_TARGETS_EXPAND ? 'fade-in' : 'fade-out'">
-          Meanwhile, laws targetting boycotts of Israel become a <strong>template for attacking other movements</strong>, such as boycotts of the <span class="txt-highlight txt-highlight-purple">fossil</span><span class="txt-highlight txt-highlight-purple">fuels</span> and <span class="txt-highlight txt-highlight-green">firearms</span> industries.
+          Meanwhile, laws targeting boycotts in support of Palestinian rights become a <strong>template for attacking other movements</strong>, such as boycotts of the <span class="txt-highlight txt-highlight-purple">fossil</span><span class="txt-highlight txt-highlight-purple">fuels</span> and <span class="txt-highlight txt-highlight-green">firearms</span> industries.
         </span>
       </TimelineText>
     </div>

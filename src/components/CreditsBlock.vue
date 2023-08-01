@@ -197,11 +197,11 @@ const VPLogoImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 20
         <span class="credits-unroll-text">Legal Trackers</span>
       </h3>
       <p class="credits-desc credits-slide credits-desc-trackers">
-        Track U.S. legislaton targetting advocacy for
+        Track U.S. legislation targeting advocacy for
         <a href="https://legislation.palestinelegal.org/">Palestinian rights</a>
         or track
         <a href="https://justvision.org/boycott/legislation-tracker">all anti-boycott legislation</a>,
-        from advocacy for Palestinian rights to environmental sustainability and gun safety.
+        from advocacy for Palestinian rights to environmental sustainability to gun safety and beyond.
       </p>
       <div class="credits-logos">
         <PalestineLegalLogo class="credits-logo credits-logo-palestine-legal credits-slide" />

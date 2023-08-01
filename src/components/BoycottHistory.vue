@@ -156,7 +156,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
           </span>
         </h3>
         <p class="history-desc">
-          The Supreme Court unequivocally rules that politically motivated boycotts are protected under the First Amendment, in a case brought by the NAACP to protect the right to protest police brutality by boycotting white merchants.
+          The Supreme Court unequivocally rules that politically motivated boycotts are protected under the First Amendment, in a case brought by the NAACP to protect the right to protest racial injustice by boycotting white merchants.
         </p>
       </div>
     </div>
@@ -277,7 +277,7 @@ const imageSrcSizes = '(orientation: landscape) and (min-width: 992px) 250px, (o
       ]"
     >
       <p>
-        That year, Democratic and Republican lawmakers begin introducing anti-boycott bills to suppress boycotts that support
+        In 2014, Democratic and Republican lawmakers begin introducing anti-boycott bills to suppress boycotts that support
         <span class="txt-highlight txt-highlight-blue">Palestinian rights</span>
       </p>
     </div>

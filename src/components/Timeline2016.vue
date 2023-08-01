@@ -75,7 +75,7 @@ const yearProgress = computed(() => {
     <div class="timeline-text-group">
       <TimelineText :keyframe="keyframe" :start="KEY_2016_START" :end="KEY_2016_COLLAPSE">
         <span class="fade" :class="keyframe >= KEY_2016_INTRO ? 'fade-in' : 'fade-out'">
-          The trend picks up pace as legislators across the country try to suppress Americans’ right to boycott against Israeli apartheid.
+          The trend picks up pace as legislators across the country try to suppress Americans’ right in support of Palestinian rights.
         </span>
       </TimelineText>
     </div>
