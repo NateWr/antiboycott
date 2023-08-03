@@ -45,7 +45,7 @@ const FilmJpgSrc = FilmJpg
   .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
   .join(',')
 
-const FilmImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 350, (orientation: landscape) 150px, (min-width: 720px) 350, 200px';
+const FilmImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 350px, (orientation: landscape) 150px, (min-width: 720px) 350px, 200px';
 
 const JustVisionWebpSrc = JustVisionWebp
   .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
@@ -65,7 +65,7 @@ const UsaStatesPngSrc = UsaStatesPng
   .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
   .join(',')
 
-const UsaStatesImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 200px, (orientation: landscape) 100px, (min-width: 720px) 200px, 100px';
+const UsaStatesImageSrcSizes = '(orientation: landscape) and (min-width: 1024px) 435px, (orientation: landscape) 250px, (min-width: 720px) 435px, 250px';
 
 const VPLogoWebpSrc = VPLogoWebp
   .map(({src, w}: {src: string, w: number}) => `${src} ${w}w`)
